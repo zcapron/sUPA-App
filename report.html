@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>Processed Report</h2>
+    <div id="reportContainer"></div>
+    <a href="index.html">Upload Another File</a>
+
+    <script>
+        // Retrieve the table HTML string from localStorage
+        const tableHTML = localStorage.getItem("reportTable");
+
+        // Check if there's a report in localStorage
+        if (tableHTML) {
+            document.getElementById("reportContainer").innerHTML = tableHTML;
+        } else {
+            document.getElementById("reportContainer").innerHTML = "<p>No report available. Please upload a file and process it first.</p>";
+        }
+    </script>
+</body>
+</html>

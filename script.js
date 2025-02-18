@@ -38,7 +38,7 @@ document.getElementById('fileInput').addEventListener('change', function(event) 
                 const dragsLbs = [];
                 const LoverDs = [];
 
-                for (let i = 0; i < stepCount; i++) {
+                for (let i = 0; i < stepCount + 1; i++) {
                     const velocity = minVelocity + i * velocityStep; // velocity mph
                     const velocityFPS = velocity * 5280 / 3600; // velocity fps
 

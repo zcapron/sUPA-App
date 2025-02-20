@@ -1,103 +1,140 @@
-// When a file is selected, handle the file parsing
-document.getElementById('fileInput').addEventListener('change', function(event) {
-    const file = event.target.files[0];
-    if (file) {
-        // Use PapaParse to parse the file
-        Papa.parse(file, {
-            complete: function(results) {
-                // Filter out any empty or whitespace-only rows
-                const cleanedData = results.data.filter(row => {
-                    // Check if the row has any non-empty values
-                    return Object.values(row).some(value => value.trim() !== '');
-                });
-                
-                const input = cleanedData[0];
+/*---------MOTOR CONFIGURATION INFORMATION-----------*/
 
-                const maxVelocity = parseFloat(input["max velocity (mph)"]);
-                const minVelocity = parseFloat(input["min velocity (mph)"]);
-                const rho = parseFloat(input["rho"]);
-                const planformArea = parseFloat(input["planform area (ft^2)"]);
-                const weight = parseFloat(input["weight (lbs)"]);
-                const liftSlope = parseFloat(input["lift curve slope"]);
-                const yIntercept = parseFloat(input["y intercept"]);
-                const dragCoeff1 = parseFloat(input["drag coefficient a"]);
-                const dragCoeff2 = parseFloat(input["drag coefficient b"]);
-                const dragCoeff3 = parseFloat(input["drag coefficient c"]);
-                const dragCoeff4 = parseFloat(input["drag coefficient d"]);
-                const dragCoeff5 = parseFloat(input["drag coefficient e"]);
+M3P2B3data = [
+    [], // thrust (oz)
+    [18.8, 18.8, 18.8, 18.8, 18.8, 18.8, 18.8, 18.8, 18.8, 18.8, 18.8, 18.8, 18.8, 18.8, 18.8, 18.8, 18.8, 18.8, 18.8, 18.8, 18.8, 18.8, 18.8, 18.8, 18.8 ], // battery current (A)
+    [], // efficiency
+]
 
 
-                const stepCount = maxVelocity - minVelocity;
-                const velocityStep = 1;
-                // Generate velocities and calculate dynamic pressure
-                const velocities = [];
-                const pressures = [];
-                const coeffLifts = [];
-                const AoAs = [];
-                const dragsOZ = [];
-                const dragsLbs = [];
-                const LoverDs = [];
 
-                for (let i = 0; i < stepCount + 1; i++) {
-                    const velocity = minVelocity + i * velocityStep; // velocity mph
-                    const velocityFPS = velocity * 5280 / 3600; // velocity fps
 
-                    // calculate q and cl 
-                    const dynamicPressure = 0.5 * rho * velocityFPS * velocityFPS;  
-                    const coefficientLift = weight / (dynamicPressure * planformArea);
-                    const AoA = (coefficientLift - yIntercept) / liftSlope;
-                    const coefficientDrag = dragCoeff1 * AoA**4 + dragCoeff2 * AoA**3 + dragCoeff3 * AoA**2 + dragCoeff4 * AoA + dragCoeff5;
-                    const dragLb = coefficientDrag * dynamicPressure * planformArea;
-                    const dragOz = dragLb * 16;
-                    const LoverD = weight / dragLb;
 
-                    velocities.push(velocity);
-                    pressures.push(dynamicPressure);
-                    coeffLifts.push(coefficientLift);
-                    AoAs.push(AoA);
-                    dragsLbs.push(dragLb);
-                    dragsOZ.push(dragOz);
-                    LoverDs.push(LoverD)
-                }
-                
-                // Output the velocities and pressures
-                const resultsData = velocities.map((velocity, index) => ({
-                    "Velocity (mph)": velocity.toFixed(0),
-                    "Dynamic Pressure": pressures[index].toFixed(2),
-                    "CL": coeffLifts[index].toFixed(2),
-                    "Angle of Attack (deg)": AoAs[index].toFixed(0),
-                    "Drag (lbs)": dragsLbs[index].toFixed(2),
-                    "Drag (Oz)": dragsOZ[index].toFixed(2),
-                    "L/D": LoverDs[index].toFixed(2)
-                }));
-                
-                let tableHTML = "<table border='1'><thead><tr>";
-                Object.keys(resultsData[0]).forEach(key => {
-                    tableHTML += `<th>${key}</th>`;
-                });
-                tableHTML += "</tr></thead><tbody>";
-                
-                resultsData.forEach(rowData => {
-                    tableHTML += "<tr>";
-                    Object.values(rowData).forEach(value => {
-                        tableHTML += `<td>${value}</td>`;
-                    });
-                    tableHTML += "</tr>";
-                });
-                tableHTML += "</tbody></table>";
-                
-                // Store the table HTML string in localStorage
-                localStorage.setItem("reportTable", tableHTML);
-                
-                // Redirect to the report page
-                window.location.href = "report.html";
 
-            },
-            error: function(error) {
-                console.error('Error parsing the file:', error);
-            },
-            header: true // assuming the CSV has headers
-        });
+function getMotorData(motor) {
+
+}
+
+function getPropData(prop) {
+
+}
+
+function calculateAeroBody(velocity, rho, liftCoeffs, dragCoeffs, weight, planformArea) {
+    // Calculate the aerodynamic SLF characteristics 
+    const velocityFPS = velocity * 5280 / 3600; // velocity fps
+
+    // calculate q and cl 
+    const dynamicPressure = 0.5 * rho * velocityFPS * velocityFPS;  
+    const coefficientLift = weight / (dynamicPressure * planformArea);
+    const AoA = (coefficientLift - liftCoeffs[1]) / liftCoeffs[0];
+    const coefficientDrag = dragCoeffs[0] * AoA**4 + dragCoeffs[1] * AoA**3 + dragCoeffs[2] * AoA**2 + dragCoeffs[3] * AoA + dragCoeffs[4];
+    const dragLb = coefficientDrag * dynamicPressure * planformArea;
+    const dragOz = dragLb * 16;
+    const lOverD = weight / dragLb;
+    const cLThreeHalfD = coefficientLift**(3/2) / coefficientDrag
+
+    return [dynamicPressure, coefficientLift, AoA, coefficientDrag, dragLb, dragOz, lOverD, cLThreeHalfD];
+}
+
+
+
+
+const airDensitites = [
+    0.0023769, // 0 ft
+    0.0023423, // 500 ft
+    0.0023423, // 1000 ft
+    0.0022743, // 1500 ft
+    0.0022409, // 2000 ft
+    0.0022078, // 2500 ft
+    0.0021751, // 3000 ft
+    0.0021428, // 3500 ft
+    0.0021109, // 4000 ft
+    0.0020793, // 4500 ft
+    0.0020481, // 5000 ft
+    0.0020172, // 5500 ft
+    0.0019867, // 6000 ft
+    0.0019566, // 6500 ft
+    0.0019268, // 7000 ft
+    0.0018974, // 7500 ft
+    0.0018683, // 8000 ft
+    0.0018395, // 8500 ft
+    0.0018111 // 9000 ft
+]
+
+function runAnalysis(event) {
+    try {
+        event.preventDefault(); // Prevent form submission refresh
+
+        // Gather form inputs
+        const S = parseFloat(document.getElementById("planformArea").value);
+        const lSlopeConstants = [
+            parseFloat(document.getElementById("lSlope").value),
+            parseFloat(document.getElementById("lIntercept").value)
+        ];
+        const dSlopeConstants = [
+            parseFloat(document.getElementById("dC1").value),
+            parseFloat(document.getElementById("dC2").value),
+            parseFloat(document.getElementById("dC3").value),
+            parseFloat(document.getElementById("dC4").value),
+            parseFloat(document.getElementById("dC5").value)
+        ];
+        const dryWeight = parseFloat(document.getElementById("weight").value);
+        const payloadWeight = parseFloat(document.getElementById("pWeight").value);
+        const motorType = document.querySelector('input[name="motors"]:checked').value;
+        const propType = document.querySelector('input[name="props"]:checked').value;
+
+        const totalWeight = dryWeight + payloadWeight;
+
+        // Velocity range
+        const minVelocity = 10;
+        const maxVelocity = 65;
+        const velocityStep = 1;
+        const stepCount = maxVelocity - minVelocity + 1;
+
+        // Store results in an object
+        let results = {};
+
+        // Iterate over altitude levels
+        for (let i = 0; i < airDensitites.length; i++) {
+            let rho = airDensitites[i];
+            let altitude = i * 500; // Assuming altitudes in 500ft increments
+
+            // Initialize velocity-based storage
+            let altitudeData = {};
+
+            for (let j = 0; j < stepCount; j++) {
+                const velocity = minVelocity + j * velocityStep;
+                const [dynamicPressure, coefficientLift, AoA, coefficientDrag, dragLb, dragOz, lOverD, cLThreeHalfD] =
+                    calculateAeroBody(velocity, rho, lSlopeConstants, dSlopeConstants, totalWeight, S);
+
+                // Store results for this velocity
+                altitudeData[velocity] = {
+                    dynamicPressure,
+                    coefficientLift,
+                    AoA,
+                    coefficientDrag,
+                    dragLb,
+                    dragOz,
+                    lOverD,
+                    cLThreeHalfD
+                };
+            }
+
+            // Store results for this altitude
+            results[altitude] = altitudeData;
+        }
+
+        // Store results in localStorage
+        localStorage.setItem("analysisResults", JSON.stringify(results));
+
+        // Redirect to results page
+        window.location.href = "results.html";
+    } catch (error) {
+        console.log("Error in analysis:", error);
     }
-});
+}
+
+// Attach event listener to the form
+document.getElementById("inputForm").addEventListener("submit", runAnalysis);
+
 

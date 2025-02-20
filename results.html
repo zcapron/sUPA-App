@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis Results</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Analysis Results</h1>
+    <a href = "index.html">Run another analysis.</a> <br>
+    <h2>L/D Ratio vs. Airspeed</h2>
+    <canvas id="ldChart" width="400" height="200"></canvas>
+    <label for="altitudeSelect">Select Altitude (ft):</label>
+    <select id="altitudeSelect" onchange="updateTable()"></select> <br>
+    <button id="toggleButton">Hide Table</button>
+
+    <table id="resultsTable">
+        <thead>
+            <tr>
+                <th>Velocity (mph)</th>
+                <th>Dynamic Pressure</th>
+                <th>Coefficient Lift</th>
+                <th>Angle of Attack (AoA)</th>
+                <th>Coefficient Drag</th>
+                <th>Drag (lbs)</th>
+                <th>Trust Required (oz)</th>
+                <th>L/D Ratio</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data will be inserted here dynamically -->
+        </tbody>
+    </table>
+
+    <script src="resultScript.js"></script>
+
+</body>
+</html>

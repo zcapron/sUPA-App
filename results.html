@@ -10,11 +10,23 @@
 <body>
     <h1>Analysis Results</h1>
     <a href = "index.html">Run another analysis.</a> <br>
-    <h2>L/D Ratio vs. Airspeed</h2>
-    <canvas id="ldChart" width="400" height="200"></canvas>
-    <label for="altitudeSelect">Select Altitude (ft):</label>
-    <select id="altitudeSelect" onchange="updateTable()"></select> <br>
-    <button id="toggleButton">Hide Table</button>
+    <div class="charts">
+        <div class="graph">
+            <h2>L/D Ratio vs. Airspeed</h2>
+            <canvas id="ldChart"></canvas>
+        </div>
+        <div class="graph">
+            <h2>Thrust vs. Airspeed</h2>
+            <canvas id="TaTrChart"></canvas>
+        </div> <br>
+    </div>
+    <p id="resultLog"></p><br>
+    <div class="optionPanel">
+        <label for="altitudeSelect">Select Altitude (ft):</label>
+        <select id="altitudeSelect"></select>
+        <button id="toggleButton">Hide Table</button>
+    </div>
+
 
     <table id="resultsTable">
         <thead>
@@ -27,6 +39,7 @@
                 <th>Drag (lbs)</th>
                 <th>Trust Required (oz)</th>
                 <th>L/D Ratio</th>
+                <th>Endurance (min)</th>
             </tr>
         </thead>
         <tbody>

@@ -1,8 +1,11 @@
+
+
 document.addEventListener("DOMContentLoaded", function () {
     const toggleButton = document.getElementById("toggleButton");
     const resultsTable = document.getElementById("resultsTable");
     const altitudeSelect = document.getElementById("altitudeSelect");
-    let chartInstance = null; // Store Chart.js instance
+    let chartInstance1 = null;
+    let chartInstance2 = null;
 
     toggleButton.addEventListener("click", function () {
         if (resultsTable.classList.contains("hidden")) {
@@ -16,6 +19,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function loadResults() {
         const results = JSON.parse(localStorage.getItem("analysisResults")) || {};
+        const maxResults = JSON.parse(localStorage.getItem("maxResults")) || {};
+        let maxEndurance = maxResults.maxEndurance;
+        let maxEnduranceVelocity = maxResults.maxEnduranceVelocity;
+        let maxEnduranceAltitude = maxResults.maxEnduranceAltitude;
+
+        document.getElementById("resultLog").innerHTML = "Max endurance is " + maxEndurance.toFixed(0) + " minutes traveling at " + maxEnduranceVelocity.toFixed(0) + " mph at " + maxEnduranceAltitude.toFixed(0) + " ft (msl)."
+
         altitudeSelect.innerHTML = ""; // Clear previous options
 
         for (let altitude in results) {
@@ -51,6 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     <td>${data.dragLb.toFixed(4)}</td>
                     <td>${data.dragOz.toFixed(4)}</td>
                     <td>${data.lOverD.toFixed(4)}</td>
+                    <td>${data.endurance.toFixed(2)}</td>
                 `;
 
                 tableBody.appendChild(row);
@@ -66,20 +77,33 @@ document.addEventListener("DOMContentLoaded", function () {
         const airspeed = [];
         const ldRatio = [];
         const cLThreeHalfD = [];
+        const thrustAvailable = [];
+        const thrustRequired = [];
+        const current = [];
 
         for (let velocity in results[selectedAltitude]) {
             airspeed.push(parseFloat(velocity));
             ldRatio.push(results[selectedAltitude][velocity].lOverD);
-            cLThreeHalfD.push(results[selectedAltitude][velocity].cLThreeHalfD)
+            cLThreeHalfD.push(results[selectedAltitude][velocity].cLThreeHalfD);
+            thrustAvailable.push(results[selectedAltitude][velocity].thrust);
+            thrustRequired.push(results[selectedAltitude][velocity].dragOz);
+        }
+        console.log(thrustAvailable);
+
+        const ctx1 = document.getElementById("ldChart").getContext("2d");
+        const ctx2 = document.getElementById("TaTrChart").getContext("2d");
+
+        if (chartInstance1) { 
+            chartInstance1.destroy(); 
+            chartInstance1 = null;
+        }// Destroy previous chart instance to prevent duplication
+        if (chartInstance2) { 
+            chartInstance2.destroy(); 
+            chartInstance2 = null;
         }
 
-        const ctx = document.getElementById("ldChart").getContext("2d");
 
-        if (chartInstance) {
-            chartInstance.destroy(); // Destroy previous chart instance to prevent duplication
-        }
-
-        chartInstance = new Chart(ctx, {
+        chartInstance1 = new Chart(ctx1, {
             type: "line",
             data: {
                 labels: airspeed,
@@ -115,6 +139,48 @@ document.addEventListener("DOMContentLoaded", function () {
                         title: {
                             display: true,
                             text: "L/D Ratio"
+                        }
+                    }
+                }
+            }
+        });
+
+        chartInstance2 = new Chart(ctx2, {
+            type: "line",
+            data: {
+                labels: airspeed,
+                datasets: [{
+                    label: "Thrust Available",
+                    data: thrustAvailable,
+                    borderColor: "blue",
+                    borderWidth: 2,
+                    fill: false,
+                    pointRadius: 5,
+                    pointBackgroundColor: "blue"
+                }, 
+                {
+                    label: "Thrust Required",
+                    data: thrustRequired,
+                    borderColor: "red",
+                    borderWidth: 2,
+                    fill: false,
+                    pointRadius: 5,
+                    pointBackgroundColor: "red"
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: "Airspeed (mph)"
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: "Thrust (oz)"
                         }
                     }
                 }

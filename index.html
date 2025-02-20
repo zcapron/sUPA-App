@@ -10,37 +10,40 @@
 <body>
     <h1>Aerodynamics Analysis Pipeline V0.1</h1>
     <p>Andrew Jesus, 2025</p>
-    <form id="inputForm">
-        <h3>StarCCM Data</h3>
-        <label for="planformArea">Planform Area (ft<sup>2</sup>)</label><br>
-        <input type="text" id="planformArea"><br>
-        <label for="lSlope">Lift Curve Slope</label><br>
-        <input type="text" id="lSlope">x + <input type="text" id="lIntercept"><br>
-        <p>Drag Curve Equation</p><br>
-        <input type="text" id="dC1">x<sup>4</sup>+
-        <input type="text" id="dC2">x<sup>3</sup>+
-        <input type="text" id="dC3">x<sup>2</sup>+
-        <input type="text" id="dC4">x+
-        <input type="text" id="dC5"><br>
-        <h3>Other Aircraft Information</h3>
-        <label for="weight">Aircraft Dry Weight (lb)</label><br>
-        <input type="text" id="weight"><br>
-        <label for="pWeight">Payload Weight (0-1.5lbs)</label><br>
-        <input type="text" id="pWeight"><br>
-        <p>Motor Used</p>
-        <input type="radio" id="M1" name="motors" value="M1">
-        <label for="M1">Motor 1</label>
-        <input type="radio" id="M2" name="motors" value="M2">
-        <label for="M2">Motor 2</label>
-        <input type="radio" id="M3" name="motors" value="M3">
-        <label for="M3">Motor 3</label><br>
-        <p>Propeller Used</p>
-        <input type="radio" id="P1" name="props" value="P1">
-        <label for="P1">Prop Size 1</label>
-        <input type="radio" id="P2" name="props" value="P2">
-        <label for="P2">Prop Size 2</label>
-        <input type="radio" id="P3" name="props" value="P3">
-        <label for="P3">Prop Size 3</label><br>
-        <input type="submit" value="Run Analysis">
-    </form> 
+    <div class="form">
+        <form id="inputForm">
+            <h3>StarCCM Data</h3>
+            <label for="planformArea">Planform Area (ft<sup>2</sup>):</label>
+            <input type="text" id="planformArea"><br>
+
+            <label for="lSlope">Lift Curve Slope:</label>
+            <input type="text" id="lSlope"> x + <input type="text" id="lIntercept"><br>
+            <label for="dC1">Drag Curve Equation:</label><br>
+            <input type="text" id="dC1"> x<sup>4</sup> +
+            <input type="text" id="dC2"> x<sup>3</sup> +
+            <input type="text" id="dC3"> x<sup>2</sup> +
+            <input type="text" id="dC4"> x +
+            <input type="text" id="dC5"><br>
+            <h3>Other Aircraft Information</h3>
+            <label for="weight">Aircraft Dry Weight (lb): </label>
+            <input type="text" id="weight"><br>
+            <label for="pWeight">Payload Weight (0-1.5lbs): </label>
+            <input type="text" id="pWeight"><br>
+            <!-- <p>Motor Used</p>
+            <input type="radio" id="M1" name="motors" value="M1">
+            <label for="M1">Motor 1</label>
+            <input type="radio" id="M2" name="motors" value="M2">
+            <label for="M2">Motor 2</label>
+            <input type="radio" id="M3" name="motors" value="M3">
+            <label for="M3">Motor 3</label><br>
+            <p>Propeller Used</p>
+            <input type="radio" id="P1" name="props" value="P1">
+            <label for="P1">Prop Size 1</label>
+            <input type="radio" id="P2" name="props" value="P2">
+            <label for="P2">Prop Size 2</label>
+            <input type="radio" id="P3" name="props" value="P3">
+            <label for="P3">Prop Size 3</label><br><br> -->
+            <input type="submit" value="Run Analysis">
+        </form> 
+    </div>
 </html>

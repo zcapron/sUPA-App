@@ -19,8 +19,6 @@ const BA353047016 = [
 
 
 
-
-
 function getMotorData(motor, velocity) {
     let thrust = 0, current = 0, efficiency = 0;
 
@@ -139,6 +137,10 @@ function runAnalysis(event) {
         let maxEndurance = 0;
         let maxEnduranceVelocity = 0;
         let maxEnduranceAltitude = 0;
+        let maxCalcVelocity = 0;
+        let maxCalcVelocityAltitude = 0;
+        let minCalcVelocity = 100;
+        let minCalcVelocityAltitude = 0;
         let maxVals = {};
 
         // Iterate over altitude levels
@@ -159,12 +161,27 @@ function runAnalysis(event) {
 
                 // Endurance information 
                 const endurance = caclulateEndurance(cLThreeHalfD, batteryEnergy, rho, S, totalWeight, efficiency)
+
                 // Store results for this velocity
                 if (endurance > maxEndurance){
                     maxEndurance = endurance;
                     maxEnduranceVelocity = velocity;
                     maxEnduranceAltitude = altitude;
                 } 
+                
+
+                // checking for stall speed 
+
+                if (AoA < 10.5 && velocity < minCalcVelocity) {
+                    minCalcVelocity = velocity;
+                    minCalcVelocityAltitude = altitude;
+                }
+
+                // checking for max speed
+                if (thrust >= dragOz && velocity > maxCalcVelocity) {
+                    maxCalcVelocity = velocity;
+                    maxCalcVelocityAltitude = altitude;
+                }
 
                 altitudeData[velocity] = {
                     dynamicPressure,
@@ -182,10 +199,27 @@ function runAnalysis(event) {
                 };
             }
 
+
+
             // Store results for this altitude
             results[altitude] = altitudeData;
         }
-        maxVals = {maxEndurance, maxEnduranceVelocity, maxEnduranceAltitude}
+        
+        maxVals = {
+            endurance: {
+                maxEndurance: maxEndurance,
+                maxEnduranceVelocity: maxEnduranceVelocity,
+                maxEnduranceAltitude: maxEnduranceAltitude
+            },
+            maxSpeed: {
+                maxCalcVelocity: maxCalcVelocity,
+                maxCalcVelocityAltitude: maxCalcVelocityAltitude
+            },
+            minSpeed: {
+                minCalcVelocity: minCalcVelocity,
+                minCalcVelocityAltitude: minCalcVelocityAltitude
+            }
+        };
         // Store results in localStorage
         localStorage.setItem("analysisResults", JSON.stringify(results));
         localStorage.setItem("maxResults", JSON.stringify(maxVals));

@@ -163,7 +163,7 @@ function runAnalysis(event) {
                 const endurance = caclulateEndurance(cLThreeHalfD, batteryEnergy, rho, S, totalWeight, efficiency)
 
                 // Store results for this velocity
-                if (endurance > maxEndurance){
+                if (endurance > maxEndurance && AoA < 10.5){
                     maxEndurance = endurance;
                     maxEnduranceVelocity = velocity;
                     maxEnduranceAltitude = altitude;

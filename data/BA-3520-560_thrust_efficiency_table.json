@@ -1,0 +1,4094 @@
+{
+    "0": {
+        "100": {
+            "thrust": 160.3,
+            "efficiency": 79.7
+        },
+        "30": {
+            "thrust": 18.3,
+            "efficiency": 77.0
+        },
+        "35": {
+            "thrust": 24.5,
+            "efficiency": 79.6
+        },
+        "40": {
+            "thrust": 31.4,
+            "efficiency": 81.1
+        },
+        "45": {
+            "thrust": 39.0,
+            "efficiency": 82.0
+        },
+        "50": {
+            "thrust": 47.3,
+            "efficiency": 82.4
+        },
+        "55": {
+            "thrust": 56.2,
+            "efficiency": 82.6
+        },
+        "60": {
+            "thrust": 65.7,
+            "efficiency": 82.6
+        },
+        "65": {
+            "thrust": 75.8,
+            "efficiency": 82.4
+        },
+        "70": {
+            "thrust": 86.4,
+            "efficiency": 82.1
+        },
+        "75": {
+            "thrust": 97.6,
+            "efficiency": 81.8
+        },
+        "80": {
+            "thrust": 109.2,
+            "efficiency": 81.5
+        },
+        "85": {
+            "thrust": 121.3,
+            "efficiency": 81.1
+        },
+        "90": {
+            "thrust": 133.9,
+            "efficiency": 80.6
+        },
+        "95": {
+            "thrust": 146.9,
+            "efficiency": 80.2
+        }
+    },
+    "1": {
+        "100": {
+            "thrust": 159.2,
+            "efficiency": 79.7
+        },
+        "30": {
+            "thrust": 18.0,
+            "efficiency": 77.0
+        },
+        "35": {
+            "thrust": 24.1,
+            "efficiency": 79.6
+        },
+        "40": {
+            "thrust": 30.9,
+            "efficiency": 81.1
+        },
+        "45": {
+            "thrust": 38.5,
+            "efficiency": 82.0
+        },
+        "50": {
+            "thrust": 46.7,
+            "efficiency": 82.4
+        },
+        "55": {
+            "thrust": 55.6,
+            "efficiency": 82.6
+        },
+        "60": {
+            "thrust": 65.0,
+            "efficiency": 82.6
+        },
+        "65": {
+            "thrust": 75.1,
+            "efficiency": 82.4
+        },
+        "70": {
+            "thrust": 85.7,
+            "efficiency": 82.1
+        },
+        "75": {
+            "thrust": 96.8,
+            "efficiency": 81.8
+        },
+        "80": {
+            "thrust": 108.3,
+            "efficiency": 81.5
+        },
+        "85": {
+            "thrust": 120.4,
+            "efficiency": 81.1
+        },
+        "90": {
+            "thrust": 132.9,
+            "efficiency": 80.6
+        },
+        "95": {
+            "thrust": 145.9,
+            "efficiency": 80.2
+        }
+    },
+    "2": {
+        "100": {
+            "thrust": 158.2,
+            "efficiency": 79.7
+        },
+        "30": {
+            "thrust": 17.6,
+            "efficiency": 77.0
+        },
+        "35": {
+            "thrust": 23.7,
+            "efficiency": 79.6
+        },
+        "40": {
+            "thrust": 30.5,
+            "efficiency": 81.1
+        },
+        "45": {
+            "thrust": 38.0,
+            "efficiency": 82.0
+        },
+        "50": {
+            "thrust": 46.2,
+            "efficiency": 82.4
+        },
+        "55": {
+            "thrust": 55.0,
+            "efficiency": 82.6
+        },
+        "60": {
+            "thrust": 64.4,
+            "efficiency": 82.6
+        },
+        "65": {
+            "thrust": 74.4,
+            "efficiency": 82.4
+        },
+        "70": {
+            "thrust": 84.9,
+            "efficiency": 82.1
+        },
+        "75": {
+            "thrust": 95.9,
+            "efficiency": 81.8
+        },
+        "80": {
+            "thrust": 107.5,
+            "efficiency": 81.5
+        },
+        "85": {
+            "thrust": 119.5,
+            "efficiency": 81.1
+        },
+        "90": {
+            "thrust": 132.0,
+            "efficiency": 80.6
+        },
+        "95": {
+            "thrust": 144.9,
+            "efficiency": 80.2
+        }
+    },
+    "3": {
+        "100": {
+            "thrust": 157.2,
+            "efficiency": 79.7
+        },
+        "30": {
+            "thrust": 17.3,
+            "efficiency": 77.1
+        },
+        "35": {
+            "thrust": 23.3,
+            "efficiency": 79.6
+        },
+        "40": {
+            "thrust": 30.0,
+            "efficiency": 81.1
+        },
+        "45": {
+            "thrust": 37.5,
+            "efficiency": 82.0
+        },
+        "50": {
+            "thrust": 45.6,
+            "efficiency": 82.4
+        },
+        "55": {
+            "thrust": 54.4,
+            "efficiency": 82.6
+        },
+        "60": {
+            "thrust": 63.7,
+            "efficiency": 82.6
+        },
+        "65": {
+            "thrust": 73.7,
+            "efficiency": 82.4
+        },
+        "70": {
+            "thrust": 84.1,
+            "efficiency": 82.1
+        },
+        "75": {
+            "thrust": 95.1,
+            "efficiency": 81.8
+        },
+        "80": {
+            "thrust": 106.6,
+            "efficiency": 81.5
+        },
+        "85": {
+            "thrust": 118.6,
+            "efficiency": 81.1
+        },
+        "90": {
+            "thrust": 131.0,
+            "efficiency": 80.6
+        },
+        "95": {
+            "thrust": 143.9,
+            "efficiency": 80.2
+        }
+    },
+    "4": {
+        "100": {
+            "thrust": 156.1,
+            "efficiency": 79.7
+        },
+        "30": {
+            "thrust": 17.0,
+            "efficiency": 77.1
+        },
+        "35": {
+            "thrust": 22.9,
+            "efficiency": 79.6
+        },
+        "40": {
+            "thrust": 29.6,
+            "efficiency": 81.1
+        },
+        "45": {
+            "thrust": 37.0,
+            "efficiency": 82.0
+        },
+        "50": {
+            "thrust": 45.1,
+            "efficiency": 82.4
+        },
+        "55": {
+            "thrust": 53.8,
+            "efficiency": 82.6
+        },
+        "60": {
+            "thrust": 63.1,
+            "efficiency": 82.6
+        },
+        "65": {
+            "thrust": 73.0,
+            "efficiency": 82.4
+        },
+        "70": {
+            "thrust": 83.4,
+            "efficiency": 82.1
+        },
+        "75": {
+            "thrust": 94.4,
+            "efficiency": 81.8
+        },
+        "80": {
+            "thrust": 105.8,
+            "efficiency": 81.5
+        },
+        "85": {
+            "thrust": 117.7,
+            "efficiency": 81.1
+        },
+        "90": {
+            "thrust": 130.1,
+            "efficiency": 80.6
+        },
+        "95": {
+            "thrust": 142.9,
+            "efficiency": 80.2
+        }
+    },
+    "5": {
+        "100": {
+            "thrust": 155.1,
+            "efficiency": 79.7
+        },
+        "30": {
+            "thrust": 16.7,
+            "efficiency": 77.1
+        },
+        "35": {
+            "thrust": 22.6,
+            "efficiency": 79.6
+        },
+        "40": {
+            "thrust": 29.2,
+            "efficiency": 81.1
+        },
+        "45": {
+            "thrust": 36.6,
+            "efficiency": 82.0
+        },
+        "50": {
+            "thrust": 44.6,
+            "efficiency": 82.4
+        },
+        "55": {
+            "thrust": 53.2,
+            "efficiency": 82.6
+        },
+        "60": {
+            "thrust": 62.5,
+            "efficiency": 82.5
+        },
+        "65": {
+            "thrust": 72.3,
+            "efficiency": 82.4
+        },
+        "70": {
+            "thrust": 82.7,
+            "efficiency": 82.1
+        },
+        "75": {
+            "thrust": 93.6,
+            "efficiency": 81.8
+        },
+        "80": {
+            "thrust": 105.0,
+            "efficiency": 81.4
+        },
+        "85": {
+            "thrust": 116.9,
+            "efficiency": 81.0
+        },
+        "90": {
+            "thrust": 129.2,
+            "efficiency": 80.6
+        },
+        "95": {
+            "thrust": 142.0,
+            "efficiency": 80.2
+        }
+    },
+    "6": {
+        "100": {
+            "thrust": 154.2,
+            "efficiency": 79.7
+        },
+        "30": {
+            "thrust": 16.3,
+            "efficiency": 77.1
+        },
+        "35": {
+            "thrust": 22.2,
+            "efficiency": 79.6
+        },
+        "40": {
+            "thrust": 28.8,
+            "efficiency": 81.1
+        },
+        "45": {
+            "thrust": 36.1,
+            "efficiency": 81.9
+        },
+        "50": {
+            "thrust": 44.1,
+            "efficiency": 82.4
+        },
+        "55": {
+            "thrust": 52.7,
+            "efficiency": 82.6
+        },
+        "60": {
+            "thrust": 61.9,
+            "efficiency": 82.5
+        },
+        "65": {
+            "thrust": 71.7,
+            "efficiency": 82.4
+        },
+        "70": {
+            "thrust": 82.0,
+            "efficiency": 82.1
+        },
+        "75": {
+            "thrust": 92.9,
+            "efficiency": 81.8
+        },
+        "80": {
+            "thrust": 104.2,
+            "efficiency": 81.4
+        },
+        "85": {
+            "thrust": 116.0,
+            "efficiency": 81.0
+        },
+        "90": {
+            "thrust": 128.3,
+            "efficiency": 80.6
+        },
+        "95": {
+            "thrust": 141.0,
+            "efficiency": 80.2
+        }
+    },
+    "7": {
+        "100": {
+            "thrust": 153.2,
+            "efficiency": 79.7
+        },
+        "30": {
+            "thrust": 16.0,
+            "efficiency": 77.1
+        },
+        "35": {
+            "thrust": 21.8,
+            "efficiency": 79.6
+        },
+        "40": {
+            "thrust": 28.4,
+            "efficiency": 81.1
+        },
+        "45": {
+            "thrust": 35.6,
+            "efficiency": 81.9
+        },
+        "50": {
+            "thrust": 43.6,
+            "efficiency": 82.4
+        },
+        "55": {
+            "thrust": 52.1,
+            "efficiency": 82.6
+        },
+        "60": {
+            "thrust": 61.3,
+            "efficiency": 82.5
+        },
+        "65": {
+            "thrust": 71.0,
+            "efficiency": 82.4
+        },
+        "70": {
+            "thrust": 81.3,
+            "efficiency": 82.1
+        },
+        "75": {
+            "thrust": 92.1,
+            "efficiency": 81.8
+        },
+        "80": {
+            "thrust": 103.4,
+            "efficiency": 81.4
+        },
+        "85": {
+            "thrust": 115.2,
+            "efficiency": 81.0
+        },
+        "90": {
+            "thrust": 127.4,
+            "efficiency": 80.6
+        },
+        "95": {
+            "thrust": 140.1,
+            "efficiency": 80.2
+        }
+    },
+    "8": {
+        "100": {
+            "thrust": 152.2,
+            "efficiency": 79.7
+        },
+        "30": {
+            "thrust": 15.7,
+            "efficiency": 77.1
+        },
+        "35": {
+            "thrust": 21.4,
+            "efficiency": 79.6
+        },
+        "40": {
+            "thrust": 27.9,
+            "efficiency": 81.1
+        },
+        "45": {
+            "thrust": 35.2,
+            "efficiency": 81.9
+        },
+        "50": {
+            "thrust": 43.0,
+            "efficiency": 82.4
+        },
+        "55": {
+            "thrust": 51.6,
+            "efficiency": 82.5
+        },
+        "60": {
+            "thrust": 60.7,
+            "efficiency": 82.5
+        },
+        "65": {
+            "thrust": 70.4,
+            "efficiency": 82.4
+        },
+        "70": {
+            "thrust": 80.6,
+            "efficiency": 82.1
+        },
+        "75": {
+            "thrust": 91.4,
+            "efficiency": 81.8
+        },
+        "80": {
+            "thrust": 102.6,
+            "efficiency": 81.4
+        },
+        "85": {
+            "thrust": 114.4,
+            "efficiency": 81.0
+        },
+        "90": {
+            "thrust": 126.6,
+            "efficiency": 80.6
+        },
+        "95": {
+            "thrust": 139.2,
+            "efficiency": 80.2
+        }
+    },
+    "9": {
+        "100": {
+            "thrust": 151.3,
+            "efficiency": 79.7
+        },
+        "30": {
+            "thrust": 15.3,
+            "efficiency": 77.1
+        },
+        "35": {
+            "thrust": 21.0,
+            "efficiency": 79.6
+        },
+        "40": {
+            "thrust": 27.5,
+            "efficiency": 81.1
+        },
+        "45": {
+            "thrust": 34.7,
+            "efficiency": 81.9
+        },
+        "50": {
+            "thrust": 42.5,
+            "efficiency": 82.4
+        },
+        "55": {
+            "thrust": 51.0,
+            "efficiency": 82.5
+        },
+        "60": {
+            "thrust": 60.1,
+            "efficiency": 82.5
+        },
+        "65": {
+            "thrust": 69.7,
+            "efficiency": 82.4
+        },
+        "70": {
+            "thrust": 79.9,
+            "efficiency": 82.1
+        },
+        "75": {
+            "thrust": 90.6,
+            "efficiency": 81.8
+        },
+        "80": {
+            "thrust": 101.8,
+            "efficiency": 81.4
+        },
+        "85": {
+            "thrust": 113.5,
+            "efficiency": 81.0
+        },
+        "90": {
+            "thrust": 125.7,
+            "efficiency": 80.6
+        },
+        "95": {
+            "thrust": 138.3,
+            "efficiency": 80.2
+        }
+    },
+    "10": {
+        "100": {
+            "thrust": 150.3,
+            "efficiency": 79.7
+        },
+        "30": {
+            "thrust": 14.8,
+            "efficiency": 77.0
+        },
+        "35": {
+            "thrust": 20.6,
+            "efficiency": 79.6
+        },
+        "40": {
+            "thrust": 27.1,
+            "efficiency": 81.1
+        },
+        "45": {
+            "thrust": 34.2,
+            "efficiency": 81.9
+        },
+        "50": {
+            "thrust": 42.0,
+            "efficiency": 82.4
+        },
+        "55": {
+            "thrust": 50.4,
+            "efficiency": 82.5
+        },
+        "60": {
+            "thrust": 59.5,
+            "efficiency": 82.5
+        },
+        "65": {
+            "thrust": 69.1,
+            "efficiency": 82.3
+        },
+        "70": {
+            "thrust": 79.2,
+            "efficiency": 82.1
+        },
+        "75": {
+            "thrust": 89.9,
+            "efficiency": 81.8
+        },
+        "80": {
+            "thrust": 101.1,
+            "efficiency": 81.4
+        },
+        "85": {
+            "thrust": 112.7,
+            "efficiency": 81.0
+        },
+        "90": {
+            "thrust": 124.8,
+            "efficiency": 80.6
+        },
+        "95": {
+            "thrust": 137.4,
+            "efficiency": 80.1
+        }
+    },
+    "11": {
+        "100": {
+            "thrust": 149.4,
+            "efficiency": 79.7
+        },
+        "30": {
+            "thrust": 14.2,
+            "efficiency": 76.9
+        },
+        "35": {
+            "thrust": 20.1,
+            "efficiency": 79.6
+        },
+        "40": {
+            "thrust": 26.6,
+            "efficiency": 81.1
+        },
+        "45": {
+            "thrust": 33.7,
+            "efficiency": 81.9
+        },
+        "50": {
+            "thrust": 41.5,
+            "efficiency": 82.4
+        },
+        "55": {
+            "thrust": 49.9,
+            "efficiency": 82.5
+        },
+        "60": {
+            "thrust": 58.8,
+            "efficiency": 82.5
+        },
+        "65": {
+            "thrust": 68.4,
+            "efficiency": 82.3
+        },
+        "70": {
+            "thrust": 78.5,
+            "efficiency": 82.1
+        },
+        "75": {
+            "thrust": 89.1,
+            "efficiency": 81.8
+        },
+        "80": {
+            "thrust": 100.3,
+            "efficiency": 81.4
+        },
+        "85": {
+            "thrust": 111.9,
+            "efficiency": 81.0
+        },
+        "90": {
+            "thrust": 123.9,
+            "efficiency": 80.6
+        },
+        "95": {
+            "thrust": 136.4,
+            "efficiency": 80.1
+        }
+    },
+    "12": {
+        "100": {
+            "thrust": 148.4,
+            "efficiency": 79.7
+        },
+        "30": {
+            "thrust": 13.6,
+            "efficiency": 76.8
+        },
+        "35": {
+            "thrust": 19.5,
+            "efficiency": 79.6
+        },
+        "40": {
+            "thrust": 26.0,
+            "efficiency": 81.1
+        },
+        "45": {
+            "thrust": 33.2,
+            "efficiency": 81.9
+        },
+        "50": {
+            "thrust": 40.9,
+            "efficiency": 82.4
+        },
+        "55": {
+            "thrust": 49.3,
+            "efficiency": 82.5
+        },
+        "60": {
+            "thrust": 58.2,
+            "efficiency": 82.5
+        },
+        "65": {
+            "thrust": 67.7,
+            "efficiency": 82.3
+        },
+        "70": {
+            "thrust": 77.8,
+            "efficiency": 82.1
+        },
+        "75": {
+            "thrust": 88.4,
+            "efficiency": 81.8
+        },
+        "80": {
+            "thrust": 99.5,
+            "efficiency": 81.4
+        },
+        "85": {
+            "thrust": 111.0,
+            "efficiency": 81.0
+        },
+        "90": {
+            "thrust": 123.1,
+            "efficiency": 80.6
+        },
+        "95": {
+            "thrust": 135.5,
+            "efficiency": 80.1
+        }
+    },
+    "13": {
+        "100": {
+            "thrust": 147.4,
+            "efficiency": 79.7
+        },
+        "30": {
+            "thrust": 12.9,
+            "efficiency": 76.6
+        },
+        "35": {
+            "thrust": 18.8,
+            "efficiency": 79.5
+        },
+        "40": {
+            "thrust": 25.4,
+            "efficiency": 81.1
+        },
+        "45": {
+            "thrust": 32.6,
+            "efficiency": 81.9
+        },
+        "50": {
+            "thrust": 40.3,
+            "efficiency": 82.4
+        },
+        "55": {
+            "thrust": 48.7,
+            "efficiency": 82.5
+        },
+        "60": {
+            "thrust": 57.6,
+            "efficiency": 82.5
+        },
+        "65": {
+            "thrust": 67.1,
+            "efficiency": 82.3
+        },
+        "70": {
+            "thrust": 77.1,
+            "efficiency": 82.1
+        },
+        "75": {
+            "thrust": 87.6,
+            "efficiency": 81.7
+        },
+        "80": {
+            "thrust": 98.7,
+            "efficiency": 81.4
+        },
+        "85": {
+            "thrust": 110.2,
+            "efficiency": 81.0
+        },
+        "90": {
+            "thrust": 122.2,
+            "efficiency": 80.6
+        },
+        "95": {
+            "thrust": 134.6,
+            "efficiency": 80.1
+        }
+    },
+    "14": {
+        "100": {
+            "thrust": 146.5,
+            "efficiency": 79.7
+        },
+        "30": {
+            "thrust": 12.1,
+            "efficiency": 76.3
+        },
+        "35": {
+            "thrust": 18.1,
+            "efficiency": 79.5
+        },
+        "40": {
+            "thrust": 24.7,
+            "efficiency": 81.1
+        },
+        "45": {
+            "thrust": 31.9,
+            "efficiency": 82.0
+        },
+        "50": {
+            "thrust": 39.7,
+            "efficiency": 82.4
+        },
+        "55": {
+            "thrust": 48.0,
+            "efficiency": 82.5
+        },
+        "60": {
+            "thrust": 56.9,
+            "efficiency": 82.5
+        },
+        "65": {
+            "thrust": 66.4,
+            "efficiency": 82.3
+        },
+        "70": {
+            "thrust": 76.4,
+            "efficiency": 82.1
+        },
+        "75": {
+            "thrust": 86.9,
+            "efficiency": 81.7
+        },
+        "80": {
+            "thrust": 97.9,
+            "efficiency": 81.4
+        },
+        "85": {
+            "thrust": 109.4,
+            "efficiency": 81.0
+        },
+        "90": {
+            "thrust": 121.3,
+            "efficiency": 80.5
+        },
+        "95": {
+            "thrust": 133.7,
+            "efficiency": 80.1
+        }
+    },
+    "15": {
+        "100": {
+            "thrust": 145.5,
+            "efficiency": 79.6
+        },
+        "30": {
+            "thrust": 11.3,
+            "efficiency": 76.0
+        },
+        "35": {
+            "thrust": 17.3,
+            "efficiency": 79.4
+        },
+        "40": {
+            "thrust": 23.9,
+            "efficiency": 81.1
+        },
+        "45": {
+            "thrust": 31.2,
+            "efficiency": 82.0
+        },
+        "50": {
+            "thrust": 39.0,
+            "efficiency": 82.4
+        },
+        "55": {
+            "thrust": 47.4,
+            "efficiency": 82.5
+        },
+        "60": {
+            "thrust": 56.3,
+            "efficiency": 82.5
+        },
+        "65": {
+            "thrust": 65.7,
+            "efficiency": 82.3
+        },
+        "70": {
+            "thrust": 75.6,
+            "efficiency": 82.1
+        },
+        "75": {
+            "thrust": 86.1,
+            "efficiency": 81.7
+        },
+        "80": {
+            "thrust": 97.1,
+            "efficiency": 81.4
+        },
+        "85": {
+            "thrust": 108.5,
+            "efficiency": 81.0
+        },
+        "90": {
+            "thrust": 120.4,
+            "efficiency": 80.5
+        },
+        "95": {
+            "thrust": 132.8,
+            "efficiency": 80.1
+        }
+    },
+    "16": {
+        "100": {
+            "thrust": 144.5,
+            "efficiency": 79.6
+        },
+        "30": {
+            "thrust": 10.5,
+            "efficiency": 75.4
+        },
+        "35": {
+            "thrust": 16.4,
+            "efficiency": 79.2
+        },
+        "40": {
+            "thrust": 23.1,
+            "efficiency": 81.1
+        },
+        "45": {
+            "thrust": 30.4,
+            "efficiency": 82.0
+        },
+        "50": {
+            "thrust": 38.2,
+            "efficiency": 82.4
+        },
+        "55": {
+            "thrust": 46.6,
+            "efficiency": 82.5
+        },
+        "60": {
+            "thrust": 55.5,
+            "efficiency": 82.5
+        },
+        "65": {
+            "thrust": 65.0,
+            "efficiency": 82.3
+        },
+        "70": {
+            "thrust": 74.9,
+            "efficiency": 82.0
+        },
+        "75": {
+            "thrust": 85.3,
+            "efficiency": 81.7
+        },
+        "80": {
+            "thrust": 96.2,
+            "efficiency": 81.4
+        },
+        "85": {
+            "thrust": 107.7,
+            "efficiency": 80.9
+        },
+        "90": {
+            "thrust": 119.5,
+            "efficiency": 80.5
+        },
+        "95": {
+            "thrust": 131.8,
+            "efficiency": 80.1
+        }
+    },
+    "17": {
+        "100": {
+            "thrust": 143.6,
+            "efficiency": 79.6
+        },
+        "30": {
+            "thrust": 9.5,
+            "efficiency": 74.7
+        },
+        "35": {
+            "thrust": 15.6,
+            "efficiency": 79.1
+        },
+        "40": {
+            "thrust": 22.2,
+            "efficiency": 81.1
+        },
+        "45": {
+            "thrust": 29.5,
+            "efficiency": 82.0
+        },
+        "50": {
+            "thrust": 37.4,
+            "efficiency": 82.4
+        },
+        "55": {
+            "thrust": 45.8,
+            "efficiency": 82.6
+        },
+        "60": {
+            "thrust": 54.8,
+            "efficiency": 82.5
+        },
+        "65": {
+            "thrust": 64.2,
+            "efficiency": 82.3
+        },
+        "70": {
+            "thrust": 74.1,
+            "efficiency": 82.0
+        },
+        "75": {
+            "thrust": 84.5,
+            "efficiency": 81.7
+        },
+        "80": {
+            "thrust": 95.4,
+            "efficiency": 81.3
+        },
+        "85": {
+            "thrust": 106.8,
+            "efficiency": 80.9
+        },
+        "90": {
+            "thrust": 118.6,
+            "efficiency": 80.5
+        },
+        "95": {
+            "thrust": 130.9,
+            "efficiency": 80.1
+        }
+    },
+    "18": {
+        "100": {
+            "thrust": 142.6,
+            "efficiency": 79.6
+        },
+        "30": {
+            "thrust": 8.4,
+            "efficiency": 73.6
+        },
+        "35": {
+            "thrust": 14.6,
+            "efficiency": 78.8
+        },
+        "40": {
+            "thrust": 21.3,
+            "efficiency": 81.0
+        },
+        "45": {
+            "thrust": 28.6,
+            "efficiency": 82.0
+        },
+        "50": {
+            "thrust": 36.5,
+            "efficiency": 82.5
+        },
+        "55": {
+            "thrust": 45.0,
+            "efficiency": 82.6
+        },
+        "60": {
+            "thrust": 53.9,
+            "efficiency": 82.5
+        },
+        "65": {
+            "thrust": 63.4,
+            "efficiency": 82.3
+        },
+        "70": {
+            "thrust": 73.3,
+            "efficiency": 82.0
+        },
+        "75": {
+            "thrust": 83.7,
+            "efficiency": 81.7
+        },
+        "80": {
+            "thrust": 94.6,
+            "efficiency": 81.3
+        },
+        "85": {
+            "thrust": 105.9,
+            "efficiency": 80.9
+        },
+        "90": {
+            "thrust": 117.7,
+            "efficiency": 80.5
+        },
+        "95": {
+            "thrust": 129.9,
+            "efficiency": 80.1
+        }
+    },
+    "19": {
+        "100": {
+            "thrust": 141.6,
+            "efficiency": 79.6
+        },
+        "30": {
+            "thrust": 7.3,
+            "efficiency": 72.0
+        },
+        "35": {
+            "thrust": 13.5,
+            "efficiency": 78.5
+        },
+        "40": {
+            "thrust": 20.3,
+            "efficiency": 81.0
+        },
+        "45": {
+            "thrust": 27.6,
+            "efficiency": 82.1
+        },
+        "50": {
+            "thrust": 35.5,
+            "efficiency": 82.5
+        },
+        "55": {
+            "thrust": 44.0,
+            "efficiency": 82.6
+        },
+        "60": {
+            "thrust": 53.0,
+            "efficiency": 82.6
+        },
+        "65": {
+            "thrust": 62.5,
+            "efficiency": 82.4
+        },
+        "70": {
+            "thrust": 72.4,
+            "efficiency": 82.1
+        },
+        "75": {
+            "thrust": 82.9,
+            "efficiency": 81.7
+        },
+        "80": {
+            "thrust": 93.7,
+            "efficiency": 81.3
+        },
+        "85": {
+            "thrust": 105.0,
+            "efficiency": 80.9
+        },
+        "90": {
+            "thrust": 116.8,
+            "efficiency": 80.5
+        },
+        "95": {
+            "thrust": 129.0,
+            "efficiency": 80.1
+        }
+    },
+    "20": {
+        "100": {
+            "thrust": 140.6,
+            "efficiency": 79.6
+        },
+        "30": {
+            "thrust": 6.1,
+            "efficiency": 69.7
+        },
+        "35": {
+            "thrust": 12.4,
+            "efficiency": 78.0
+        },
+        "40": {
+            "thrust": 19.2,
+            "efficiency": 80.9
+        },
+        "45": {
+            "thrust": 26.6,
+            "efficiency": 82.1
+        },
+        "50": {
+            "thrust": 34.5,
+            "efficiency": 82.6
+        },
+        "55": {
+            "thrust": 43.0,
+            "efficiency": 82.7
+        },
+        "60": {
+            "thrust": 52.1,
+            "efficiency": 82.6
+        },
+        "65": {
+            "thrust": 61.5,
+            "efficiency": 82.4
+        },
+        "70": {
+            "thrust": 71.5,
+            "efficiency": 82.1
+        },
+        "75": {
+            "thrust": 82.0,
+            "efficiency": 81.7
+        },
+        "80": {
+            "thrust": 92.8,
+            "efficiency": 81.3
+        },
+        "85": {
+            "thrust": 104.1,
+            "efficiency": 80.9
+        },
+        "90": {
+            "thrust": 115.8,
+            "efficiency": 80.5
+        },
+        "95": {
+            "thrust": 128.0,
+            "efficiency": 80.1
+        }
+    },
+    "21": {
+        "100": {
+            "thrust": 139.5,
+            "efficiency": 79.6
+        },
+        "30": {
+            "thrust": 4.8,
+            "efficiency": 66.2
+        },
+        "35": {
+            "thrust": 11.1,
+            "efficiency": 77.4
+        },
+        "40": {
+            "thrust": 18.1,
+            "efficiency": 80.8
+        },
+        "45": {
+            "thrust": 25.5,
+            "efficiency": 82.1
+        },
+        "50": {
+            "thrust": 33.4,
+            "efficiency": 82.6
+        },
+        "55": {
+            "thrust": 41.9,
+            "efficiency": 82.8
+        },
+        "60": {
+            "thrust": 51.0,
+            "efficiency": 82.7
+        },
+        "65": {
+            "thrust": 60.6,
+            "efficiency": 82.4
+        },
+        "70": {
+            "thrust": 70.5,
+            "efficiency": 82.1
+        },
+        "75": {
+            "thrust": 81.0,
+            "efficiency": 81.8
+        },
+        "80": {
+            "thrust": 91.9,
+            "efficiency": 81.4
+        },
+        "85": {
+            "thrust": 103.2,
+            "efficiency": 80.9
+        },
+        "90": {
+            "thrust": 114.9,
+            "efficiency": 80.5
+        },
+        "95": {
+            "thrust": 127.0,
+            "efficiency": 80.1
+        }
+    },
+    "22": {
+        "100": {
+            "thrust": 138.5,
+            "efficiency": 79.6
+        },
+        "30": {
+            "thrust": 3.5,
+            "efficiency": 60.6
+        },
+        "35": {
+            "thrust": 9.9,
+            "efficiency": 76.4
+        },
+        "40": {
+            "thrust": 16.8,
+            "efficiency": 80.6
+        },
+        "45": {
+            "thrust": 24.3,
+            "efficiency": 82.1
+        },
+        "50": {
+            "thrust": 32.3,
+            "efficiency": 82.7
+        },
+        "55": {
+            "thrust": 40.8,
+            "efficiency": 82.8
+        },
+        "60": {
+            "thrust": 49.9,
+            "efficiency": 82.7
+        },
+        "65": {
+            "thrust": 59.5,
+            "efficiency": 82.5
+        },
+        "70": {
+            "thrust": 69.5,
+            "efficiency": 82.2
+        },
+        "75": {
+            "thrust": 79.9,
+            "efficiency": 81.8
+        },
+        "80": {
+            "thrust": 90.9,
+            "efficiency": 81.4
+        },
+        "85": {
+            "thrust": 102.2,
+            "efficiency": 80.9
+        },
+        "90": {
+            "thrust": 113.9,
+            "efficiency": 80.5
+        },
+        "95": {
+            "thrust": 126.0,
+            "efficiency": 80.1
+        }
+    },
+    "23": {
+        "100": {
+            "thrust": 137.5,
+            "efficiency": 79.6
+        },
+        "30": {
+            "thrust": 2.2,
+            "efficiency": 50.7
+        },
+        "35": {
+            "thrust": 8.5,
+            "efficiency": 75.0
+        },
+        "40": {
+            "thrust": 15.5,
+            "efficiency": 80.3
+        },
+        "45": {
+            "thrust": 23.1,
+            "efficiency": 82.1
+        },
+        "50": {
+            "thrust": 31.1,
+            "efficiency": 82.8
+        },
+        "55": {
+            "thrust": 39.6,
+            "efficiency": 82.9
+        },
+        "60": {
+            "thrust": 48.7,
+            "efficiency": 82.8
+        },
+        "65": {
+            "thrust": 58.3,
+            "efficiency": 82.6
+        },
+        "70": {
+            "thrust": 68.4,
+            "efficiency": 82.2
+        },
+        "75": {
+            "thrust": 78.8,
+            "efficiency": 81.8
+        },
+        "80": {
+            "thrust": 89.8,
+            "efficiency": 81.4
+        },
+        "85": {
+            "thrust": 101.1,
+            "efficiency": 81.0
+        },
+        "90": {
+            "thrust": 112.9,
+            "efficiency": 80.5
+        },
+        "95": {
+            "thrust": 125.0,
+            "efficiency": 80.1
+        }
+    },
+    "24": {
+        "100": {
+            "thrust": 136.4,
+            "efficiency": 79.6
+        },
+        "30": {
+            "thrust": 0.9,
+            "efficiency": 30.0
+        },
+        "35": {
+            "thrust": 7.1,
+            "efficiency": 73.0
+        },
+        "40": {
+            "thrust": 14.2,
+            "efficiency": 79.9
+        },
+        "45": {
+            "thrust": 21.8,
+            "efficiency": 82.1
+        },
+        "50": {
+            "thrust": 29.9,
+            "efficiency": 82.8
+        },
+        "55": {
+            "thrust": 38.4,
+            "efficiency": 83.0
+        },
+        "60": {
+            "thrust": 47.5,
+            "efficiency": 82.9
+        },
+        "65": {
+            "thrust": 57.1,
+            "efficiency": 82.6
+        },
+        "70": {
+            "thrust": 67.2,
+            "efficiency": 82.3
+        },
+        "75": {
+            "thrust": 77.8,
+            "efficiency": 81.9
+        },
+        "80": {
+            "thrust": 88.6,
+            "efficiency": 81.4
+        },
+        "85": {
+            "thrust": 100.0,
+            "efficiency": 81.0
+        },
+        "90": {
+            "thrust": 111.8,
+            "efficiency": 80.5
+        },
+        "95": {
+            "thrust": 123.9,
+            "efficiency": 80.1
+        }
+    },
+    "25": {
+        "100": {
+            "thrust": 135.3,
+            "efficiency": 79.6
+        },
+        "30": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "35": {
+            "thrust": 5.7,
+            "efficiency": 69.8
+        },
+        "40": {
+            "thrust": 12.7,
+            "efficiency": 79.4
+        },
+        "45": {
+            "thrust": 20.4,
+            "efficiency": 82.0
+        },
+        "50": {
+            "thrust": 28.6,
+            "efficiency": 82.9
+        },
+        "55": {
+            "thrust": 37.2,
+            "efficiency": 83.1
+        },
+        "60": {
+            "thrust": 46.2,
+            "efficiency": 83.0
+        },
+        "65": {
+            "thrust": 55.9,
+            "efficiency": 82.7
+        },
+        "70": {
+            "thrust": 66.0,
+            "efficiency": 82.4
+        },
+        "75": {
+            "thrust": 76.5,
+            "efficiency": 81.9
+        },
+        "80": {
+            "thrust": 87.5,
+            "efficiency": 81.5
+        },
+        "85": {
+            "thrust": 98.8,
+            "efficiency": 81.0
+        },
+        "90": {
+            "thrust": 110.6,
+            "efficiency": 80.6
+        },
+        "95": {
+            "thrust": 122.8,
+            "efficiency": 80.1
+        }
+    },
+    "26": {
+        "100": {
+            "thrust": 134.1,
+            "efficiency": 79.6
+        },
+        "30": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "35": {
+            "thrust": 4.2,
+            "efficiency": 64.8
+        },
+        "40": {
+            "thrust": 11.3,
+            "efficiency": 78.5
+        },
+        "45": {
+            "thrust": 19.0,
+            "efficiency": 81.9
+        },
+        "50": {
+            "thrust": 27.2,
+            "efficiency": 82.9
+        },
+        "55": {
+            "thrust": 35.9,
+            "efficiency": 83.2
+        },
+        "60": {
+            "thrust": 44.9,
+            "efficiency": 83.1
+        },
+        "65": {
+            "thrust": 54.5,
+            "efficiency": 82.8
+        },
+        "70": {
+            "thrust": 64.7,
+            "efficiency": 82.4
+        },
+        "75": {
+            "thrust": 75.2,
+            "efficiency": 82.0
+        },
+        "80": {
+            "thrust": 86.3,
+            "efficiency": 81.5
+        },
+        "85": {
+            "thrust": 97.7,
+            "efficiency": 81.1
+        },
+        "90": {
+            "thrust": 109.4,
+            "efficiency": 80.6
+        },
+        "95": {
+            "thrust": 121.6,
+            "efficiency": 80.1
+        }
+    },
+    "27": {
+        "100": {
+            "thrust": 132.9,
+            "efficiency": 79.6
+        },
+        "30": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "35": {
+            "thrust": 2.7,
+            "efficiency": 55.9
+        },
+        "40": {
+            "thrust": 9.7,
+            "efficiency": 77.3
+        },
+        "45": {
+            "thrust": 17.5,
+            "efficiency": 81.7
+        },
+        "50": {
+            "thrust": 25.8,
+            "efficiency": 83.0
+        },
+        "55": {
+            "thrust": 34.5,
+            "efficiency": 83.3
+        },
+        "60": {
+            "thrust": 43.6,
+            "efficiency": 83.2
+        },
+        "65": {
+            "thrust": 53.2,
+            "efficiency": 82.9
+        },
+        "70": {
+            "thrust": 63.3,
+            "efficiency": 82.5
+        },
+        "75": {
+            "thrust": 73.9,
+            "efficiency": 82.1
+        },
+        "80": {
+            "thrust": 84.9,
+            "efficiency": 81.6
+        },
+        "85": {
+            "thrust": 96.4,
+            "efficiency": 81.1
+        },
+        "90": {
+            "thrust": 108.1,
+            "efficiency": 80.6
+        },
+        "95": {
+            "thrust": 120.3,
+            "efficiency": 80.1
+        }
+    },
+    "28": {
+        "100": {
+            "thrust": 131.5,
+            "efficiency": 79.7
+        },
+        "30": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "35": {
+            "thrust": 1.2,
+            "efficiency": 37.5
+        },
+        "40": {
+            "thrust": 8.2,
+            "efficiency": 75.5
+        },
+        "45": {
+            "thrust": 15.9,
+            "efficiency": 81.4
+        },
+        "50": {
+            "thrust": 24.2,
+            "efficiency": 83.0
+        },
+        "55": {
+            "thrust": 33.0,
+            "efficiency": 83.4
+        },
+        "60": {
+            "thrust": 42.2,
+            "efficiency": 83.3
+        },
+        "65": {
+            "thrust": 51.8,
+            "efficiency": 83.0
+        },
+        "70": {
+            "thrust": 61.9,
+            "efficiency": 82.6
+        },
+        "75": {
+            "thrust": 72.5,
+            "efficiency": 82.2
+        },
+        "80": {
+            "thrust": 83.5,
+            "efficiency": 81.7
+        },
+        "85": {
+            "thrust": 95.0,
+            "efficiency": 81.2
+        },
+        "90": {
+            "thrust": 106.9,
+            "efficiency": 80.7
+        },
+        "95": {
+            "thrust": 119.0,
+            "efficiency": 80.2
+        }
+    },
+    "29": {
+        "100": {
+            "thrust": 130.2,
+            "efficiency": 79.7
+        },
+        "30": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "35": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "40": {
+            "thrust": 6.6,
+            "efficiency": 72.7
+        },
+        "45": {
+            "thrust": 14.3,
+            "efficiency": 80.9
+        },
+        "50": {
+            "thrust": 22.6,
+            "efficiency": 83.0
+        },
+        "55": {
+            "thrust": 31.5,
+            "efficiency": 83.5
+        },
+        "60": {
+            "thrust": 40.8,
+            "efficiency": 83.4
+        },
+        "65": {
+            "thrust": 50.4,
+            "efficiency": 83.2
+        },
+        "70": {
+            "thrust": 60.5,
+            "efficiency": 82.8
+        },
+        "75": {
+            "thrust": 71.1,
+            "efficiency": 82.3
+        },
+        "80": {
+            "thrust": 82.1,
+            "efficiency": 81.8
+        },
+        "85": {
+            "thrust": 93.6,
+            "efficiency": 81.3
+        },
+        "90": {
+            "thrust": 105.5,
+            "efficiency": 80.7
+        },
+        "95": {
+            "thrust": 117.7,
+            "efficiency": 80.2
+        }
+    },
+    "30": {
+        "100": {
+            "thrust": 128.9,
+            "efficiency": 79.8
+        },
+        "30": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "35": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "40": {
+            "thrust": 4.9,
+            "efficiency": 68.2
+        },
+        "45": {
+            "thrust": 12.6,
+            "efficiency": 80.2
+        },
+        "50": {
+            "thrust": 21.0,
+            "efficiency": 82.9
+        },
+        "55": {
+            "thrust": 29.9,
+            "efficiency": 83.6
+        },
+        "60": {
+            "thrust": 39.2,
+            "efficiency": 83.6
+        },
+        "65": {
+            "thrust": 48.9,
+            "efficiency": 83.3
+        },
+        "70": {
+            "thrust": 59.0,
+            "efficiency": 82.9
+        },
+        "75": {
+            "thrust": 69.6,
+            "efficiency": 82.4
+        },
+        "80": {
+            "thrust": 80.6,
+            "efficiency": 81.9
+        },
+        "85": {
+            "thrust": 92.1,
+            "efficiency": 81.4
+        },
+        "90": {
+            "thrust": 104.0,
+            "efficiency": 80.8
+        },
+        "95": {
+            "thrust": 116.3,
+            "efficiency": 80.3
+        }
+    },
+    "31": {
+        "100": {
+            "thrust": 127.4,
+            "efficiency": 79.8
+        },
+        "30": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "35": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "40": {
+            "thrust": 3.3,
+            "efficiency": 60.4
+        },
+        "45": {
+            "thrust": 10.9,
+            "efficiency": 79.1
+        },
+        "50": {
+            "thrust": 19.3,
+            "efficiency": 82.8
+        },
+        "55": {
+            "thrust": 28.2,
+            "efficiency": 83.7
+        },
+        "60": {
+            "thrust": 37.6,
+            "efficiency": 83.7
+        },
+        "65": {
+            "thrust": 47.4,
+            "efficiency": 83.4
+        },
+        "70": {
+            "thrust": 57.5,
+            "efficiency": 83.0
+        },
+        "75": {
+            "thrust": 68.1,
+            "efficiency": 82.5
+        },
+        "80": {
+            "thrust": 79.1,
+            "efficiency": 82.0
+        },
+        "85": {
+            "thrust": 90.6,
+            "efficiency": 81.4
+        },
+        "90": {
+            "thrust": 102.5,
+            "efficiency": 80.9
+        },
+        "95": {
+            "thrust": 114.8,
+            "efficiency": 80.4
+        }
+    },
+    "32": {
+        "100": {
+            "thrust": 125.9,
+            "efficiency": 79.9
+        },
+        "30": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "35": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "40": {
+            "thrust": 1.6,
+            "efficiency": 44.2
+        },
+        "45": {
+            "thrust": 9.2,
+            "efficiency": 77.5
+        },
+        "50": {
+            "thrust": 17.6,
+            "efficiency": 82.5
+        },
+        "55": {
+            "thrust": 26.5,
+            "efficiency": 83.7
+        },
+        "60": {
+            "thrust": 35.9,
+            "efficiency": 83.8
+        },
+        "65": {
+            "thrust": 45.8,
+            "efficiency": 83.6
+        },
+        "70": {
+            "thrust": 56.0,
+            "efficiency": 83.1
+        },
+        "75": {
+            "thrust": 66.5,
+            "efficiency": 82.6
+        },
+        "80": {
+            "thrust": 77.6,
+            "efficiency": 82.1
+        },
+        "85": {
+            "thrust": 89.1,
+            "efficiency": 81.6
+        },
+        "90": {
+            "thrust": 100.9,
+            "efficiency": 81.0
+        },
+        "95": {
+            "thrust": 113.2,
+            "efficiency": 80.4
+        }
+    },
+    "33": {
+        "100": {
+            "thrust": 124.3,
+            "efficiency": 80.0
+        },
+        "30": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "35": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "40": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "45": {
+            "thrust": 7.5,
+            "efficiency": 75.0
+        },
+        "50": {
+            "thrust": 15.8,
+            "efficiency": 82.1
+        },
+        "55": {
+            "thrust": 24.7,
+            "efficiency": 83.8
+        },
+        "60": {
+            "thrust": 34.2,
+            "efficiency": 84.0
+        },
+        "65": {
+            "thrust": 44.1,
+            "efficiency": 83.7
+        },
+        "70": {
+            "thrust": 54.4,
+            "efficiency": 83.3
+        },
+        "75": {
+            "thrust": 64.9,
+            "efficiency": 82.8
+        },
+        "80": {
+            "thrust": 76.0,
+            "efficiency": 82.2
+        },
+        "85": {
+            "thrust": 87.4,
+            "efficiency": 81.7
+        },
+        "90": {
+            "thrust": 99.3,
+            "efficiency": 81.1
+        },
+        "95": {
+            "thrust": 111.6,
+            "efficiency": 80.5
+        }
+    },
+    "34": {
+        "100": {
+            "thrust": 122.7,
+            "efficiency": 80.0
+        },
+        "30": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "35": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "40": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "45": {
+            "thrust": 5.7,
+            "efficiency": 71.1
+        },
+        "50": {
+            "thrust": 14.0,
+            "efficiency": 81.5
+        },
+        "55": {
+            "thrust": 22.9,
+            "efficiency": 83.7
+        },
+        "60": {
+            "thrust": 32.4,
+            "efficiency": 84.1
+        },
+        "65": {
+            "thrust": 42.4,
+            "efficiency": 83.9
+        },
+        "70": {
+            "thrust": 52.7,
+            "efficiency": 83.5
+        },
+        "75": {
+            "thrust": 63.3,
+            "efficiency": 82.9
+        },
+        "80": {
+            "thrust": 74.3,
+            "efficiency": 82.4
+        },
+        "85": {
+            "thrust": 85.8,
+            "efficiency": 81.8
+        },
+        "90": {
+            "thrust": 97.7,
+            "efficiency": 81.2
+        },
+        "95": {
+            "thrust": 110.0,
+            "efficiency": 80.6
+        }
+    },
+    "35": {
+        "100": {
+            "thrust": 121.0,
+            "efficiency": 80.1
+        },
+        "30": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "35": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "40": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "45": {
+            "thrust": 3.9,
+            "efficiency": 64.1
+        },
+        "50": {
+            "thrust": 12.1,
+            "efficiency": 80.6
+        },
+        "55": {
+            "thrust": 21.1,
+            "efficiency": 83.6
+        },
+        "60": {
+            "thrust": 30.6,
+            "efficiency": 84.2
+        },
+        "65": {
+            "thrust": 40.5,
+            "efficiency": 84.1
+        },
+        "70": {
+            "thrust": 50.9,
+            "efficiency": 83.6
+        },
+        "75": {
+            "thrust": 61.6,
+            "efficiency": 83.1
+        },
+        "80": {
+            "thrust": 72.7,
+            "efficiency": 82.5
+        },
+        "85": {
+            "thrust": 84.1,
+            "efficiency": 81.9
+        },
+        "90": {
+            "thrust": 96.0,
+            "efficiency": 81.3
+        },
+        "95": {
+            "thrust": 108.3,
+            "efficiency": 80.7
+        }
+    },
+    "36": {
+        "100": {
+            "thrust": 119.3,
+            "efficiency": 80.2
+        },
+        "30": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "35": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "40": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "45": {
+            "thrust": 2.1,
+            "efficiency": 50.1
+        },
+        "50": {
+            "thrust": 10.2,
+            "efficiency": 79.1
+        },
+        "55": {
+            "thrust": 19.2,
+            "efficiency": 83.4
+        },
+        "60": {
+            "thrust": 28.7,
+            "efficiency": 84.3
+        },
+        "65": {
+            "thrust": 38.7,
+            "efficiency": 84.2
+        },
+        "70": {
+            "thrust": 49.1,
+            "efficiency": 83.8
+        },
+        "75": {
+            "thrust": 59.9,
+            "efficiency": 83.3
+        },
+        "80": {
+            "thrust": 71.0,
+            "efficiency": 82.7
+        },
+        "85": {
+            "thrust": 82.4,
+            "efficiency": 82.0
+        },
+        "90": {
+            "thrust": 94.3,
+            "efficiency": 81.4
+        },
+        "95": {
+            "thrust": 106.6,
+            "efficiency": 80.8
+        }
+    },
+    "37": {
+        "100": {
+            "thrust": 117.5,
+            "efficiency": 80.3
+        },
+        "30": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "35": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "40": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "45": {
+            "thrust": 0.2,
+            "efficiency": 10.7
+        },
+        "50": {
+            "thrust": 8.4,
+            "efficiency": 76.9
+        },
+        "55": {
+            "thrust": 17.2,
+            "efficiency": 83.1
+        },
+        "60": {
+            "thrust": 26.7,
+            "efficiency": 84.4
+        },
+        "65": {
+            "thrust": 36.8,
+            "efficiency": 84.4
+        },
+        "70": {
+            "thrust": 47.2,
+            "efficiency": 84.0
+        },
+        "75": {
+            "thrust": 58.1,
+            "efficiency": 83.4
+        },
+        "80": {
+            "thrust": 69.2,
+            "efficiency": 82.8
+        },
+        "85": {
+            "thrust": 80.7,
+            "efficiency": 82.2
+        },
+        "90": {
+            "thrust": 92.5,
+            "efficiency": 81.6
+        },
+        "95": {
+            "thrust": 104.8,
+            "efficiency": 80.9
+        }
+    },
+    "38": {
+        "100": {
+            "thrust": 115.7,
+            "efficiency": 80.4
+        },
+        "30": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "35": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "40": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "45": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "50": {
+            "thrust": 6.4,
+            "efficiency": 73.4
+        },
+        "55": {
+            "thrust": 15.3,
+            "efficiency": 82.6
+        },
+        "60": {
+            "thrust": 24.8,
+            "efficiency": 84.4
+        },
+        "65": {
+            "thrust": 34.8,
+            "efficiency": 84.6
+        },
+        "70": {
+            "thrust": 45.3,
+            "efficiency": 84.2
+        },
+        "75": {
+            "thrust": 56.2,
+            "efficiency": 83.6
+        },
+        "80": {
+            "thrust": 67.4,
+            "efficiency": 83.0
+        },
+        "85": {
+            "thrust": 78.9,
+            "efficiency": 82.3
+        },
+        "90": {
+            "thrust": 90.8,
+            "efficiency": 81.7
+        },
+        "95": {
+            "thrust": 103.0,
+            "efficiency": 81.1
+        }
+    },
+    "39": {
+        "100": {
+            "thrust": 113.9,
+            "efficiency": 80.6
+        },
+        "30": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "35": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "40": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "45": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "50": {
+            "thrust": 4.5,
+            "efficiency": 67.3
+        },
+        "55": {
+            "thrust": 13.3,
+            "efficiency": 81.8
+        },
+        "60": {
+            "thrust": 22.8,
+            "efficiency": 84.4
+        },
+        "65": {
+            "thrust": 32.8,
+            "efficiency": 84.7
+        },
+        "70": {
+            "thrust": 43.3,
+            "efficiency": 84.4
+        },
+        "75": {
+            "thrust": 54.2,
+            "efficiency": 83.8
+        },
+        "80": {
+            "thrust": 65.5,
+            "efficiency": 83.2
+        },
+        "85": {
+            "thrust": 77.1,
+            "efficiency": 82.5
+        },
+        "90": {
+            "thrust": 88.9,
+            "efficiency": 81.9
+        },
+        "95": {
+            "thrust": 101.2,
+            "efficiency": 81.2
+        }
+    },
+    "40": {
+        "100": {
+            "thrust": 112.0,
+            "efficiency": 80.7
+        },
+        "30": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "35": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "40": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "45": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "50": {
+            "thrust": 2.5,
+            "efficiency": 55.1
+        },
+        "55": {
+            "thrust": 11.3,
+            "efficiency": 80.5
+        },
+        "60": {
+            "thrust": 20.7,
+            "efficiency": 84.2
+        },
+        "65": {
+            "thrust": 30.7,
+            "efficiency": 84.9
+        },
+        "70": {
+            "thrust": 41.3,
+            "efficiency": 84.6
+        },
+        "75": {
+            "thrust": 52.2,
+            "efficiency": 84.0
+        },
+        "80": {
+            "thrust": 63.5,
+            "efficiency": 83.4
+        },
+        "85": {
+            "thrust": 75.2,
+            "efficiency": 82.7
+        },
+        "90": {
+            "thrust": 87.1,
+            "efficiency": 82.0
+        },
+        "95": {
+            "thrust": 99.3,
+            "efficiency": 81.3
+        }
+    },
+    "41": {
+        "100": {
+            "thrust": 110.1,
+            "efficiency": 80.8
+        },
+        "30": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "35": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "40": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "45": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "50": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "55": {
+            "thrust": 9.2,
+            "efficiency": 78.5
+        },
+        "60": {
+            "thrust": 18.6,
+            "efficiency": 83.9
+        },
+        "65": {
+            "thrust": 28.7,
+            "efficiency": 84.9
+        },
+        "70": {
+            "thrust": 39.2,
+            "efficiency": 84.8
+        },
+        "75": {
+            "thrust": 50.2,
+            "efficiency": 84.3
+        },
+        "80": {
+            "thrust": 61.5,
+            "efficiency": 83.6
+        },
+        "85": {
+            "thrust": 73.2,
+            "efficiency": 82.9
+        },
+        "90": {
+            "thrust": 85.2,
+            "efficiency": 82.2
+        },
+        "95": {
+            "thrust": 97.4,
+            "efficiency": 81.5
+        }
+    },
+    "42": {
+        "100": {
+            "thrust": 108.1,
+            "efficiency": 81.0
+        },
+        "30": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "35": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "40": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "45": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "50": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "55": {
+            "thrust": 7.2,
+            "efficiency": 75.4
+        },
+        "60": {
+            "thrust": 16.6,
+            "efficiency": 83.5
+        },
+        "65": {
+            "thrust": 26.5,
+            "efficiency": 85.0
+        },
+        "70": {
+            "thrust": 37.1,
+            "efficiency": 85.0
+        },
+        "75": {
+            "thrust": 48.1,
+            "efficiency": 84.5
+        },
+        "80": {
+            "thrust": 59.4,
+            "efficiency": 83.8
+        },
+        "85": {
+            "thrust": 71.2,
+            "efficiency": 83.1
+        },
+        "90": {
+            "thrust": 83.2,
+            "efficiency": 82.3
+        },
+        "95": {
+            "thrust": 95.5,
+            "efficiency": 81.6
+        }
+    },
+    "43": {
+        "100": {
+            "thrust": 106.2,
+            "efficiency": 81.1
+        },
+        "30": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "35": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "40": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "45": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "50": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "55": {
+            "thrust": 5.1,
+            "efficiency": 70.0
+        },
+        "60": {
+            "thrust": 14.4,
+            "efficiency": 82.8
+        },
+        "65": {
+            "thrust": 24.4,
+            "efficiency": 85.0
+        },
+        "70": {
+            "thrust": 34.9,
+            "efficiency": 85.2
+        },
+        "75": {
+            "thrust": 45.9,
+            "efficiency": 84.7
+        },
+        "80": {
+            "thrust": 57.3,
+            "efficiency": 84.0
+        },
+        "85": {
+            "thrust": 69.1,
+            "efficiency": 83.3
+        },
+        "90": {
+            "thrust": 81.2,
+            "efficiency": 82.5
+        },
+        "95": {
+            "thrust": 93.5,
+            "efficiency": 81.8
+        }
+    },
+    "44": {
+        "100": {
+            "thrust": 104.2,
+            "efficiency": 81.3
+        },
+        "30": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "35": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "40": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "45": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "50": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "55": {
+            "thrust": 3.0,
+            "efficiency": 59.4
+        },
+        "60": {
+            "thrust": 12.3,
+            "efficiency": 81.7
+        },
+        "65": {
+            "thrust": 22.2,
+            "efficiency": 84.9
+        },
+        "70": {
+            "thrust": 32.7,
+            "efficiency": 85.3
+        },
+        "75": {
+            "thrust": 43.7,
+            "efficiency": 84.9
+        },
+        "80": {
+            "thrust": 55.2,
+            "efficiency": 84.3
+        },
+        "85": {
+            "thrust": 67.0,
+            "efficiency": 83.5
+        },
+        "90": {
+            "thrust": 79.1,
+            "efficiency": 82.7
+        },
+        "95": {
+            "thrust": 91.5,
+            "efficiency": 82.0
+        }
+    },
+    "45": {
+        "100": {
+            "thrust": 102.1,
+            "efficiency": 81.4
+        },
+        "30": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "35": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "40": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "45": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "50": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "55": {
+            "thrust": 1.0,
+            "efficiency": 32.4
+        },
+        "60": {
+            "thrust": 10.1,
+            "efficiency": 79.9
+        },
+        "65": {
+            "thrust": 20.0,
+            "efficiency": 84.7
+        },
+        "70": {
+            "thrust": 30.5,
+            "efficiency": 85.4
+        },
+        "75": {
+            "thrust": 41.5,
+            "efficiency": 85.1
+        },
+        "80": {
+            "thrust": 52.9,
+            "efficiency": 84.5
+        },
+        "85": {
+            "thrust": 64.8,
+            "efficiency": 83.7
+        },
+        "90": {
+            "thrust": 76.9,
+            "efficiency": 82.9
+        },
+        "95": {
+            "thrust": 89.4,
+            "efficiency": 82.2
+        }
+    },
+    "46": {
+        "100": {
+            "thrust": 100.0,
+            "efficiency": 81.6
+        },
+        "30": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "35": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "40": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "45": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "50": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "55": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "60": {
+            "thrust": 8.0,
+            "efficiency": 77.1
+        },
+        "65": {
+            "thrust": 17.8,
+            "efficiency": 84.3
+        },
+        "70": {
+            "thrust": 28.3,
+            "efficiency": 85.5
+        },
+        "75": {
+            "thrust": 39.3,
+            "efficiency": 85.3
+        },
+        "80": {
+            "thrust": 50.7,
+            "efficiency": 84.7
+        },
+        "85": {
+            "thrust": 62.5,
+            "efficiency": 84.0
+        },
+        "90": {
+            "thrust": 74.7,
+            "efficiency": 83.2
+        },
+        "95": {
+            "thrust": 87.2,
+            "efficiency": 82.4
+        }
+    },
+    "47": {
+        "100": {
+            "thrust": 97.9,
+            "efficiency": 81.8
+        },
+        "30": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "35": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "40": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "45": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "50": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "55": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "60": {
+            "thrust": 5.8,
+            "efficiency": 72.3
+        },
+        "65": {
+            "thrust": 15.6,
+            "efficiency": 83.6
+        },
+        "70": {
+            "thrust": 26.0,
+            "efficiency": 85.5
+        },
+        "75": {
+            "thrust": 37.0,
+            "efficiency": 85.5
+        },
+        "80": {
+            "thrust": 48.4,
+            "efficiency": 85.0
+        },
+        "85": {
+            "thrust": 60.3,
+            "efficiency": 84.2
+        },
+        "90": {
+            "thrust": 72.5,
+            "efficiency": 83.4
+        },
+        "95": {
+            "thrust": 85.0,
+            "efficiency": 82.6
+        }
+    },
+    "48": {
+        "100": {
+            "thrust": 95.6,
+            "efficiency": 82.0
+        },
+        "30": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "35": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "40": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "45": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "50": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "55": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "60": {
+            "thrust": 3.6,
+            "efficiency": 63.1
+        },
+        "65": {
+            "thrust": 13.3,
+            "efficiency": 82.7
+        },
+        "70": {
+            "thrust": 23.7,
+            "efficiency": 85.5
+        },
+        "75": {
+            "thrust": 34.6,
+            "efficiency": 85.7
+        },
+        "80": {
+            "thrust": 46.1,
+            "efficiency": 85.2
+        },
+        "85": {
+            "thrust": 57.9,
+            "efficiency": 84.5
+        },
+        "90": {
+            "thrust": 70.2,
+            "efficiency": 83.6
+        },
+        "95": {
+            "thrust": 82.8,
+            "efficiency": 82.8
+        }
+    },
+    "49": {
+        "100": {
+            "thrust": 93.3,
+            "efficiency": 82.2
+        },
+        "30": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "35": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "40": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "45": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "50": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "55": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "60": {
+            "thrust": 1.4,
+            "efficiency": 40.6
+        },
+        "65": {
+            "thrust": 11.0,
+            "efficiency": 81.1
+        },
+        "70": {
+            "thrust": 21.4,
+            "efficiency": 85.3
+        },
+        "75": {
+            "thrust": 32.3,
+            "efficiency": 85.9
+        },
+        "80": {
+            "thrust": 43.7,
+            "efficiency": 85.5
+        },
+        "85": {
+            "thrust": 55.6,
+            "efficiency": 84.7
+        },
+        "90": {
+            "thrust": 67.8,
+            "efficiency": 83.9
+        },
+        "95": {
+            "thrust": 80.4,
+            "efficiency": 83.0
+        }
+    },
+    "50": {
+        "100": {
+            "thrust": 91.0,
+            "efficiency": 82.4
+        },
+        "30": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "35": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "40": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "45": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "50": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "55": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "60": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "65": {
+            "thrust": 8.8,
+            "efficiency": 78.6
+        },
+        "70": {
+            "thrust": 19.1,
+            "efficiency": 85.0
+        },
+        "75": {
+            "thrust": 29.9,
+            "efficiency": 86.0
+        },
+        "80": {
+            "thrust": 41.3,
+            "efficiency": 85.7
+        },
+        "85": {
+            "thrust": 53.2,
+            "efficiency": 85.0
+        },
+        "90": {
+            "thrust": 65.5,
+            "efficiency": 84.2
+        },
+        "95": {
+            "thrust": 78.1,
+            "efficiency": 83.3
+        }
+    },
+    "51": {
+        "100": {
+            "thrust": 88.6,
+            "efficiency": 82.7
+        },
+        "30": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "35": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "40": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "45": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "50": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "55": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "60": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "65": {
+            "thrust": 6.5,
+            "efficiency": 74.3
+        },
+        "70": {
+            "thrust": 16.7,
+            "efficiency": 84.4
+        },
+        "75": {
+            "thrust": 27.6,
+            "efficiency": 86.0
+        },
+        "80": {
+            "thrust": 38.9,
+            "efficiency": 85.9
+        },
+        "85": {
+            "thrust": 50.8,
+            "efficiency": 85.2
+        },
+        "90": {
+            "thrust": 63.0,
+            "efficiency": 84.4
+        },
+        "95": {
+            "thrust": 75.7,
+            "efficiency": 83.5
+        }
+    },
+    "52": {
+        "100": {
+            "thrust": 86.2,
+            "efficiency": 82.9
+        },
+        "30": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "35": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "40": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "45": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "50": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "55": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "60": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "65": {
+            "thrust": 4.1,
+            "efficiency": 66.3
+        },
+        "70": {
+            "thrust": 14.3,
+            "efficiency": 83.5
+        },
+        "75": {
+            "thrust": 25.2,
+            "efficiency": 86.0
+        },
+        "80": {
+            "thrust": 36.5,
+            "efficiency": 86.1
+        },
+        "85": {
+            "thrust": 48.3,
+            "efficiency": 85.5
+        },
+        "90": {
+            "thrust": 60.6,
+            "efficiency": 84.7
+        },
+        "95": {
+            "thrust": 73.2,
+            "efficiency": 83.8
+        }
+    },
+    "53": {
+        "100": {
+            "thrust": 83.7,
+            "efficiency": 83.2
+        },
+        "30": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "35": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "40": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "45": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "50": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "55": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "60": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "65": {
+            "thrust": 1.8,
+            "efficiency": 47.4
+        },
+        "70": {
+            "thrust": 12.0,
+            "efficiency": 82.1
+        },
+        "75": {
+            "thrust": 22.7,
+            "efficiency": 85.8
+        },
+        "80": {
+            "thrust": 34.0,
+            "efficiency": 86.2
+        },
+        "85": {
+            "thrust": 45.9,
+            "efficiency": 85.7
+        },
+        "90": {
+            "thrust": 58.1,
+            "efficiency": 85.0
+        },
+        "95": {
+            "thrust": 70.8,
+            "efficiency": 84.1
+        }
+    },
+    "54": {
+        "100": {
+            "thrust": 81.2,
+            "efficiency": 83.4
+        },
+        "30": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "35": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "40": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "45": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "50": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "55": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "60": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "65": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "70": {
+            "thrust": 9.6,
+            "efficiency": 79.9
+        },
+        "75": {
+            "thrust": 20.3,
+            "efficiency": 85.5
+        },
+        "80": {
+            "thrust": 31.6,
+            "efficiency": 86.4
+        },
+        "85": {
+            "thrust": 43.4,
+            "efficiency": 86.0
+        },
+        "90": {
+            "thrust": 55.6,
+            "efficiency": 85.2
+        },
+        "95": {
+            "thrust": 68.2,
+            "efficiency": 84.3
+        }
+    },
+    "55": {
+        "100": {
+            "thrust": 78.7,
+            "efficiency": 83.7
+        },
+        "30": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "35": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "40": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "45": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "50": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "55": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "60": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "65": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "70": {
+            "thrust": 7.1,
+            "efficiency": 76.1
+        },
+        "75": {
+            "thrust": 17.8,
+            "efficiency": 85.1
+        },
+        "80": {
+            "thrust": 29.1,
+            "efficiency": 86.4
+        },
+        "85": {
+            "thrust": 40.8,
+            "efficiency": 86.2
+        },
+        "90": {
+            "thrust": 53.1,
+            "efficiency": 85.5
+        },
+        "95": {
+            "thrust": 65.7,
+            "efficiency": 84.6
+        }
+    },
+    "56": {
+        "100": {
+            "thrust": 76.1,
+            "efficiency": 84.0
+        },
+        "30": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "35": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "40": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "45": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "50": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "55": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "60": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "65": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "70": {
+            "thrust": 4.7,
+            "efficiency": 69.1
+        },
+        "75": {
+            "thrust": 15.4,
+            "efficiency": 84.3
+        },
+        "80": {
+            "thrust": 26.6,
+            "efficiency": 86.4
+        },
+        "85": {
+            "thrust": 38.3,
+            "efficiency": 86.4
+        },
+        "90": {
+            "thrust": 50.5,
+            "efficiency": 85.8
+        },
+        "95": {
+            "thrust": 63.1,
+            "efficiency": 84.9
+        }
+    },
+    "57": {
+        "100": {
+            "thrust": 73.5,
+            "efficiency": 84.2
+        },
+        "30": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "35": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "40": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "45": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "50": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "55": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "60": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "65": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "70": {
+            "thrust": 2.3,
+            "efficiency": 53.2
+        },
+        "75": {
+            "thrust": 12.9,
+            "efficiency": 83.0
+        },
+        "80": {
+            "thrust": 24.0,
+            "efficiency": 86.3
+        },
+        "85": {
+            "thrust": 35.7,
+            "efficiency": 86.6
+        },
+        "90": {
+            "thrust": 47.9,
+            "efficiency": 86.0
+        },
+        "95": {
+            "thrust": 60.5,
+            "efficiency": 85.2
+        }
+    },
+    "58": {
+        "100": {
+            "thrust": 70.9,
+            "efficiency": 84.5
+        },
+        "30": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "35": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "40": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "45": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "50": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "55": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "60": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "65": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "70": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "75": {
+            "thrust": 10.4,
+            "efficiency": 81.0
+        },
+        "80": {
+            "thrust": 21.5,
+            "efficiency": 86.1
+        },
+        "85": {
+            "thrust": 33.2,
+            "efficiency": 86.7
+        },
+        "90": {
+            "thrust": 45.3,
+            "efficiency": 86.3
+        },
+        "95": {
+            "thrust": 57.9,
+            "efficiency": 85.4
+        }
+    },
+    "59": {
+        "100": {
+            "thrust": 68.2,
+            "efficiency": 84.8
+        },
+        "30": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "35": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "40": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "45": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "50": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "55": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "60": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "65": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "70": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "75": {
+            "thrust": 7.9,
+            "efficiency": 77.6
+        },
+        "80": {
+            "thrust": 18.9,
+            "efficiency": 85.6
+        },
+        "85": {
+            "thrust": 30.6,
+            "efficiency": 86.8
+        },
+        "90": {
+            "thrust": 42.7,
+            "efficiency": 86.5
+        },
+        "95": {
+            "thrust": 55.3,
+            "efficiency": 85.7
+        }
+    },
+    "60": {
+        "100": {
+            "thrust": 65.6,
+            "efficiency": 85.1
+        },
+        "30": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "35": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "40": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "45": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "50": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "55": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "60": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "65": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "70": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "75": {
+            "thrust": 5.3,
+            "efficiency": 71.4
+        },
+        "80": {
+            "thrust": 16.4,
+            "efficiency": 84.9
+        },
+        "85": {
+            "thrust": 27.9,
+            "efficiency": 86.8
+        },
+        "90": {
+            "thrust": 40.0,
+            "efficiency": 86.7
+        },
+        "95": {
+            "thrust": 52.6,
+            "efficiency": 86.0
+        }
+    },
+    "61": {
+        "100": {
+            "thrust": 62.9,
+            "efficiency": 85.4
+        },
+        "30": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "35": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "40": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "45": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "50": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "55": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "60": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "65": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "70": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "75": {
+            "thrust": 2.8,
+            "efficiency": 58.0
+        },
+        "80": {
+            "thrust": 13.8,
+            "efficiency": 83.8
+        },
+        "85": {
+            "thrust": 25.3,
+            "efficiency": 86.7
+        },
+        "90": {
+            "thrust": 37.4,
+            "efficiency": 86.9
+        },
+        "95": {
+            "thrust": 49.9,
+            "efficiency": 86.3
+        }
+    },
+    "62": {
+        "100": {
+            "thrust": 60.1,
+            "efficiency": 85.7
+        },
+        "30": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "35": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "40": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "45": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "50": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "55": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "60": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "65": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "70": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "75": {
+            "thrust": 0.3,
+            "efficiency": 11.6
+        },
+        "80": {
+            "thrust": 11.2,
+            "efficiency": 82.0
+        },
+        "85": {
+            "thrust": 22.7,
+            "efficiency": 86.5
+        },
+        "90": {
+            "thrust": 34.7,
+            "efficiency": 87.0
+        },
+        "95": {
+            "thrust": 47.2,
+            "efficiency": 86.5
+        }
+    },
+    "63": {
+        "100": {
+            "thrust": 57.4,
+            "efficiency": 85.9
+        },
+        "30": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "35": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "40": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "45": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "50": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "55": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "60": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "65": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "70": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "75": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "80": {
+            "thrust": 8.6,
+            "efficiency": 79.0
+        },
+        "85": {
+            "thrust": 20.0,
+            "efficiency": 86.2
+        },
+        "90": {
+            "thrust": 32.0,
+            "efficiency": 87.1
+        },
+        "95": {
+            "thrust": 44.5,
+            "efficiency": 86.8
+        }
+    },
+    "64": {
+        "100": {
+            "thrust": 54.6,
+            "efficiency": 86.2
+        },
+        "30": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "35": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "40": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "45": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "50": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "55": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "60": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "65": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "70": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "75": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "80": {
+            "thrust": 6.0,
+            "efficiency": 73.5
+        },
+        "85": {
+            "thrust": 17.4,
+            "efficiency": 85.5
+        },
+        "90": {
+            "thrust": 29.3,
+            "efficiency": 87.2
+        },
+        "95": {
+            "thrust": 41.7,
+            "efficiency": 87.0
+        }
+    },
+    "65": {
+        "100": {
+            "thrust": 51.8,
+            "efficiency": 86.5
+        },
+        "30": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "35": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "40": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "45": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "50": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "55": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "60": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "65": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "70": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "75": {
+            "thrust": 0,
+            "efficiency": 0
+        },
+        "80": {
+            "thrust": 3.3,
+            "efficiency": 62.0
+        },
+        "85": {
+            "thrust": 14.7,
+            "efficiency": 84.5
+        },
+        "90": {
+            "thrust": 26.6,
+            "efficiency": 87.1
+        },
+        "95": {
+            "thrust": 39.0,
+            "efficiency": 87.2
+        }
+    }
+}

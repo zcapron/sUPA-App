@@ -74,10 +74,10 @@ document.addEventListener("DOMContentLoaded", function () {
             req2.innerHTML += "Not Met";
         }
         //requirement 3
-        if (requirements[2][1] < maxCalcVelocity) {
+        if (requirements[2][1] > minCalcVelocity) {
             req3.classList.add("objective");
             req3.innerHTML += "Objective";
-        } else if (requirements[2][0] < maxCalcVelocity) {
+        } else if (requirements[2][0] > minCalcVelocity) {
             req3.classList.add("threshold");
             req3.innerHTML += "Threshold";
         } else {
@@ -85,10 +85,10 @@ document.addEventListener("DOMContentLoaded", function () {
             req3.innerHTML += "Not Met";
         }
         //requirement 4
-        if (requirements[3][1] > minCalcVelocity) {
+        if (requirements[3][1] < maxCalcVelocity) {
             req4.classList.add("objective");
             req4.innerHTML += "Objective"
-        } else if (requirements[3][0] > minCalcVelocity) {
+        } else if (requirements[3][0] < maxCalcVelocity) {
             req4.classList.add("threshold");
             req4.innerHTML += "Threshold";
         } else {

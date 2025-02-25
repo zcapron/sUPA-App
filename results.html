@@ -6,6 +6,8 @@
     <title>Analysis Results</title>
     <link rel="stylesheet" href="./css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation"></script>
+
 </head>
 <body>
     <h1>Analysis Results</h1>
@@ -38,11 +40,11 @@
     <div class="optionPanel">
         <label for="altitudeSelect">Select Altitude (ft):</label>
         <select id="altitudeSelect"></select>
-        <button id="toggleButton">Hide Table</button>
+        <button id="toggleButton">Show Table</button>
     </div>
 
 
-    <table id="resultsTable">
+    <table id="resultsTable" class="hidden">
         <thead>
             <tr>
                 <th>Velocity (mph)</th>
@@ -50,10 +52,10 @@
                 <th>Coefficient Lift</th>
                 <th>Angle of Attack (AoA)</th>
                 <th>Coefficient Drag</th>
-                <th>Drag (lbs)</th>
                 <th>Trust Required (oz)</th>
                 <th>L/D Ratio</th>
                 <th>Endurance (min)</th>
+                <th>Throttle Setting (%)</th>
             </tr>
         </thead>
         <tbody>

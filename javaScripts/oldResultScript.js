@@ -48,7 +48,6 @@ document.addEventListener("DOMContentLoaded", function () {
         let maxCalcVelocityAltitude = maxResults.maxSpeed.maxCalcVelocityAltitude;
         let minCalcVelocity = maxResults.minSpeed.minCalcVelocity;
         let minCalcVelocityAltitude = maxResults.minSpeed.minCalcVelocityAltitude;
-        let maxAltitude = maxResults.maxAltitude;
 
         // update requirements as needed
 
@@ -64,10 +63,10 @@ document.addEventListener("DOMContentLoaded", function () {
             req1.innerHTML += "Not Met";
         }
         //requirement 2
-        if (requirements[1][1] <= maxAltitude) {
+        if (requirements[1][1] < maxCalcVelocityAltitude) {
             req2.classList.add("objective");
             req2.innerHTML += "Objective";
-        } else if (requirements[1][0] < maxAltitude) {
+        } else if (requirements[1][0] < maxCalcVelocityAltitude) {
             req2.classList.add("threshold");
             req2.innerHTML += "Threshold";
         } else {
@@ -98,10 +97,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         document.getElementById("resultLog").innerHTML = `
-            Max endurance is ${maxEndurance.toFixed(0)} minutes traveling at ${maxEnduranceVelocity} mph at ${maxEnduranceAltitude.toFixed(0)} ft (msl).<br>
-            Max speed is ${maxCalcVelocity} mph at ${maxCalcVelocityAltitude.toFixed(0)} ft (msl).<br>
-            Min stall speed is ${minCalcVelocity} mph at ${minCalcVelocityAltitude.toFixed(0)} ft (msl).<br>
-            Maximum calculated altitude is ${maxAltitude} ft (msl).`;
+            Max endurance is ${maxEndurance.toFixed(0)} minutes traveling at ${maxEnduranceVelocity.toFixed(0)} mph at ${maxEnduranceAltitude.toFixed(0)} ft (msl).<br>
+            Max speed is ${maxCalcVelocity.toFixed(0)} mph at ${maxCalcVelocityAltitude.toFixed(0)} ft (msl).<br>
+            Min stall speed is ${minCalcVelocity.toFixed(0)} mph at ${minCalcVelocityAltitude.toFixed(0)} ft (msl)`;
     
         altitudeSelect.innerHTML = ""; // Clear previous options
 
@@ -123,26 +121,22 @@ document.addEventListener("DOMContentLoaded", function () {
         const selectedAltitude = altitudeSelect.value;
         const tableBody = document.querySelector("#resultsTable tbody");
         tableBody.innerHTML = ""; // Clear existing rows
-        console.log(results)
+
         if (results[selectedAltitude]) {
             for (let velocity in results[selectedAltitude]) {
-                let data = results[selectedAltitude][velocity];
-
-
-                if (data.AoA > 10.5 || isNaN(data.throttle)) continue;
-
                 let row = document.createElement("tr");
+                let data = results[selectedAltitude][velocity];
 
                 row.innerHTML = `
                     <td>${velocity}</td>
-                    <td>${data.dynamicPressure}</td>
-                    <td>${data.coefficientLift}</td>
-                    <td>${data.AoA}</td>
-                    <td>${data.coefficientDrag}</td>
-                    <td>${data.dragOz}</td>
-                    <td>${data.lOverD}</td>
-                    <td>${data.endurance}</td>
-                    <td>${data.throttle}</td>
+                    <td>${data.dynamicPressure.toFixed(4)}</td>
+                    <td>${data.coefficientLift.toFixed(4)}</td>
+                    <td>${data.AoA.toFixed(4)}</td>
+                    <td>${data.coefficientDrag.toFixed(4)}</td>
+                    <td>${data.dragLb.toFixed(4)}</td>
+                    <td>${data.dragOz.toFixed(4)}</td>
+                    <td>${data.lOverD.toFixed(4)}</td>
+                    <td>${data.endurance.toFixed(2)}</td>
                 `;
 
                 tableBody.appendChild(row);
@@ -163,14 +157,11 @@ document.addEventListener("DOMContentLoaded", function () {
         const current = [];
 
         for (let velocity in results[selectedAltitude]) {
-            // Skip first 10 vel
-            if (velocity < 16) continue;
             airspeed.push(parseFloat(velocity));
             ldRatio.push(results[selectedAltitude][velocity].lOverD);
             cLThreeHalfD.push(results[selectedAltitude][velocity].cLThreeHalfD);
             thrustAvailable.push(results[selectedAltitude][velocity].thrust);
             thrustRequired.push(results[selectedAltitude][velocity].dragOz);
-            current.push(results[selectedAltitude][velocity].current)
         }
         console.log(thrustAvailable);
 
@@ -229,20 +220,19 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
 
-        const idealSpeeds = [50, 80]; // Example ideal speeds in mph
-
         chartInstance2 = new Chart(ctx2, {
             type: "line",
             data: {
                 labels: airspeed,
                 datasets: [{
-                    label: "Max Thrust Available",
+                    label: "Maximum Thrust Available",
                     data: thrustAvailable,
                     borderColor: "blue",
                     borderWidth: 2,
                     fill: false,
                     pointRadius: 5,
-                    pointBackgroundColor: "blue"
+                    pointBackgroundColor: "blue",
+                    yAxisID: "y"
                 }, 
                 {
                     label: "Thrust Required",
@@ -251,18 +241,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     borderWidth: 2,
                     fill: false,
                     pointRadius: 5,
-                    pointBackgroundColor: "red"
+                    pointBackgroundColor: "red",
+                    yAxisID: "y"
                 },
-                {
-                    label: "Current Draw at Thrust Required",
-                    data: current, // Assuming you have an array for current values
-                    borderColor: "green",
-                    borderWidth: 2,
-                    fill: false,
-                    pointRadius: 5,
-                    pointBackgroundColor: "green",
-                    yAxisID: "y1" // Assign to the secondary y-axis
-                }]
+
+            ]
             },
             options: {
                 responsive: true,
@@ -278,36 +261,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             display: true,
                             text: "Thrust (oz)"
                         }
-                    },
-                    y1: {
-                        title: {
-                            display: true,
-                            text: "Current (A)"
-                        },
-                        position: "right",
-                        grid: {
-                            drawOnChartArea: false // Prevents grid lines from overlapping
-                        }
-                    }   
-
-                }
-            },
-            plugins: {
-                annotation: {
-                    annotations: idealSpeeds.map(speed => ({
-                        type: "line",
-                        mode: "vertical",
-                        scaleID: "x",
-                        value: speed,
-                        borderColor: "black",
-                        borderWidth: 2,
-                        borderDash: [5, 5],
-                        label: {
-                            content: `Ideal Speed: ${speed} mph`,
-                            enabled: true,
-                            position: "top"
-                        }
-                    }))
+                    }
                 }
             }
         });

@@ -1,5 +1,5 @@
 /* Constants */
-motorSelectionDefault = "./data/BA-3520-560_thrust_efficiency_table.json"
+motorSelectionDefault = "./data/BA-352015x4-560_thrust_efficiency_table.json"
 
 const batteryEnergy = 57.72; // Whr
 
@@ -79,7 +79,18 @@ function pullFormData() {
         ];
         const dryWeight = parseFloat(document.getElementById("weight").value);
         const payloadWeight = parseFloat(document.getElementById("pWeight").value);
-        motorSelection = motorSelectionDefault;
+        try {
+            motorSelected = document.querySelector('input[name="motors"]:checked').value;
+            if (motorSelected == "M1") {
+                motorSelection = "./data/BA-3520-560-5s-15x4_thrust_efficiency_table.json";
+            } else if (motorSelected == "M2") {
+                motorSelection = "./data/BA-3520-560_thrust_efficiency_table.json"
+            } else {
+                motorSelection = "./data/BA-3520-560-6s-13x15_thrust_efficiency_table.json"
+            }
+        } catch {
+            motorSelection = motorSelectionDefault;
+        }
         return [S, lSlopeConstants, dSlopeConstants, dryWeight, payloadWeight, motorSelection]
     } catch (error) {
         console.error("Error in pullFormData:", error);

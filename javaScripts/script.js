@@ -87,7 +87,7 @@ function pullFormData() {
                 motorSelection = "./data/BA-3520-560_thrust_efficiency_table.json";
             } else if (motorSelected == "M3"){
                 motorSelection = "./data/BA-3520-560-6s-13x15_thrust_efficiency_table.json";
-            } else if (motorSelected == "M5") {
+            } else if (motorSelected == "M4") {
                 motorSelection = "./data/BA-3520-560-13x6_thrust_efficiency_table.json";
             } else {
                 motorSelection = motorSelectionDefault;

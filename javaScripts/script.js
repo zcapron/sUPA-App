@@ -1,7 +1,7 @@
 /* Constants */
-motorSelectionDefault = "./data/BA-352015x4-560_thrust_efficiency_table.json"
+motorSelectionDefault = "./data/BA-3530-570-3blade_thrust_efficiency_table.json"
 
-const batteryEnergy = 57.72; // Whr
+const batteryEnergy = 67.2; // Whr
 
 const airDensities = [
     0.0023769, // 0 ft
@@ -84,11 +84,13 @@ function pullFormData() {
             if (motorSelected == "M1") {
                 motorSelection = "./data/BA-3520-560-5s-15x4_thrust_efficiency_table.json";
             } else if (motorSelected == "M2") {
-                motorSelection = "./data/BA-3520-560_thrust_efficiency_table.json"
+                motorSelection = "./data/BA-3520-560_thrust_efficiency_table.json";
             } else if (motorSelected == "M3"){
-                motorSelection = "./data/BA-3520-560-6s-13x15_thrust_efficiency_table.json"
+                motorSelection = "./data/BA-3520-560-6s-13x15_thrust_efficiency_table.json";
+            } else if (motorSelected == "M5") {
+                motorSelection = "./data/BA-3520-560-13x6_thrust_efficiency_table.json";
             } else {
-                motorSelection = "./data/BA-3520-560-13x6_thrust_efficiency_table.json"
+                motorSelection = motorSelectionDefault;
             }
         } catch {
             motorSelection = motorSelectionDefault;
@@ -277,7 +279,7 @@ function runAnalysis(event) {
                     continue;
                 }
 
-
+                // create a results object to send to localstorage
                 results[altitude][airspeed] = {
                     throttle: throttleSetting.toFixed(0),
                     efficiency: efficiencySetting.toFixed(1),
@@ -298,7 +300,7 @@ function runAnalysis(event) {
             
 
         }
-
+        // create maxval object to push to localstorage
         maxVals = {
             endurance: {
                 maxEndurance: maxEndurance,

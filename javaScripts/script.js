@@ -1,6 +1,4 @@
 /* Constants */
-motorSelectionDefault = "./data/BA-3530-570-3blade_thrust_efficiency_table.json"
-
 const batteryEnergy = 67.2; // Whr
 
 const airDensities = [
@@ -79,23 +77,7 @@ function pullFormData() {
         ];
         const dryWeight = parseFloat(document.getElementById("weight").value);
         const payloadWeight = parseFloat(document.getElementById("pWeight").value);
-        try {
-            motorSelected = document.querySelector('input[name="motors"]:checked').value;
-            if (motorSelected == "M1") {
-                motorSelection = "./data/BA-3520-560-5s-15x4_thrust_efficiency_table.json";
-            } else if (motorSelected == "M2") {
-                motorSelection = "./data/BA-3520-560_thrust_efficiency_table.json";
-            } else if (motorSelected == "M3"){
-                motorSelection = "./data/BA-3520-560-6s-13x15_thrust_efficiency_table.json";
-            } else if (motorSelected == "M4") {
-                motorSelection = "./data/BA-3520-560-13x6_thrust_efficiency_table.json";
-            } else {
-                motorSelection = motorSelectionDefault;
-            }
-        } catch {
-            motorSelection = motorSelectionDefault;
-        }
-        return [S, lSlopeConstants, dSlopeConstants, dryWeight, payloadWeight, motorSelection]
+
     } catch (error) {
         console.error("Error in pullFormData:", error);
         window.alert("Error in analysis:" + error.message);
@@ -105,31 +87,115 @@ function pullFormData() {
 
 
 
-function pullMotorData(motorSelection) {
-    return fetch(motorSelection)
-        .then(response => response.json()) // Parse JSON
-        .then(data => {
-            let parsedData = {};
+function pullMotorData() {
+    return new Promise((resolve, reject) => {
+        const files = document.getElementById("folderInput").files;
+        if (!files.length) {
+            console.log("No files found");
+            reject("No files found");
+            return;
+        }
+        
+        console.log(files[0]);
+        const airspeedValues = [...Array(66).keys()]; // Airspeed from 0-65 mph
+        let lookupTable = {};
 
-            Object.keys(data).forEach(airspeed => {
-                parsedData[airspeed] = {}; // Store throttle values as keys
-                
-                Object.keys(data[airspeed]).forEach(throttle => {
-                    parsedData[airspeed][throttle] = {
-                        thrust: data[airspeed][throttle].thrust,
-                        efficiency: data[airspeed][throttle].efficiency,
-                        rpm: data[airspeed][throttle].rpm,
-                        cT: data[airspeed][throttle].Ct,
-                        diameter: data[airspeed][throttle].diameter,
-                        current: data[airspeed][throttle].current
-                    };
-                });
+        // Initialize empty throttle objects for each airspeed
+        airspeedValues.forEach(speed => lookupTable[speed] = {});
+        let filesProcessed = 0;
+
+        // Use Promise.all to ensure that all files are processed before resolving
+        const filePromises = [...files].map(file => {
+            return new Promise((fileResolve, fileReject) => {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const lines = e.target.result.split('\n');
+                    let motor = '', battery = '', propeller = '', altitude = 0;
+                    let dataStart = 0;
+
+                    // Process metadata from the file
+                    for (let i = 0; i < lines.length; i++) {
+                        const line = lines[i].trim();
+                        if (line.includes('Motor:')) motor = line.split(': ')[1].split(';')[0].trim();
+                        if (line.includes('Battery:')) battery = line.split(': ')[1].split(';')[0].trim();
+                        if (line.includes('Drive System:')) propeller = line.split(';')[1].split(' ')[1].trim();
+                        if (line.includes('ft above Sea Level')) altitude = parseInt(line.split('ft')[0].trim(), 10);
+                        if (i >= 12 && line.match(/\d/)) { dataStart = i; break; }
+                    }
+
+                    const density = airDensities[altitude] || airDensities[0];
+                    let throttle = file.name.split('.')[0];
+                    let propDiameter = parseInt(propeller.split('x')[0]);
+
+                    // Process flight data and organize by airspeed and throttle
+                    for (let i = dataStart; i < lines.length; i++) {
+                        const columns = lines[i].trim().split(/\s+/);
+                        if (columns.length < 12 || parseFloat(columns[12]) < 1) break;
+
+                        let [airspeed, thrust, efficiency, rpm, current] = [
+                            parseFloat(columns[0]), parseFloat(columns[12]),
+                            parseFloat(columns[10]), parseInt(columns[11]),
+                            parseFloat(columns[3])
+                        ];
+
+                        if (!lookupTable[airspeed]) lookupTable[airspeed] = {};
+
+                        let Ct = rpm !== 0 ? thrust / (propDiameter ** 4 * rpm ** 2 * density) : 0;
+
+                        // Organize by throttle setting for each airspeed
+                        if (!lookupTable[airspeed][throttle]) {
+                            lookupTable[airspeed][throttle] = {};
+                        }
+
+                        lookupTable[airspeed][throttle] = {
+                            "thrust": thrust,
+                            "efficiency": efficiency,
+                            "rpm": rpm,
+                            "Ct": Ct,
+                            "diameter": propDiameter,
+                            "current": current
+                        };
+                    }
+
+                    filesProcessed++;
+
+                    // If all files are processed, create the final JSON, removing empty airspeeds
+                    if (filesProcessed === files.length) {
+                        console.log("DEBUGGING - lookupTable before resolving:", lookupTable);
+                        // Remove airspeeds with no data
+                        Object.keys(lookupTable).forEach(airspeed => {
+                            if (Object.keys(lookupTable[airspeed]).length === 0) {
+                                delete lookupTable[airspeed];
+                            }
+                        });
+                        // Add a delay to allow inspection in the console
+                        setTimeout(() => {
+                            resolve(lookupTable); // Resolve the promise with the populated lookup table
+                        }, 20000); // Delay for 2 seconds before resolving
+                    }
+                    fileResolve();
+                };
+
+                reader.onerror = function (err) {
+                    console.error("Error reading file:", err);
+                    fileReject(err);
+                };
+
+                reader.readAsText(file); // Read the file as text
             });
+        });
 
-            return parsedData; // Return processed data
-        })
-        .catch(error => console.error("Error fetching JSON:", error));
+        // Wait for all file reading to finish
+        Promise.all(filePromises).then(() => {
+            // All files processed, now resolve the final lookupTable
+            resolve(lookupTable);
+        }).catch(err => {
+            console.error("Error processing files:", err);
+            reject(err);
+        });
+    });
 }
+
 
 /* DATA PROCCESSING */
 function calculateThrustRequired(velocity, rho, liftCoeffs, dragCoeffs, weight, planformArea) {
@@ -177,11 +243,11 @@ function runAnalysis(event) {
         console.error("Form data could not be retrieved.");
         return; // Stop execution if form data is invalid
     }
-    const [S, lSlopeConstants, dSlopeConstants, dryWeight, payloadWeight, motorSelection] = formData;
+    const [S, lSlopeConstants, dSlopeConstants, dryWeight, payloadWeight] = formData;
     const totalWeight = dryWeight + payloadWeight
 
 
-    pullMotorData(motorSelection).then(motorData => {
+    pullMotorData().then(lookupTable => {
 
         // Create object to save information calculated
         let results = {};
@@ -206,7 +272,7 @@ function runAnalysis(event) {
 
             let j = 0
             // Find throttle setting for required thrust
-            for (let airspeed in motorData) {
+            for (let airspeed in lookupTable) {
                 const velocity = airspeed;
                 const [dynamicPressure, coefficientLift, AoA, coefficientDrag, dragLb, dragOz, lOverD, cLThreeHalfD] =
                     calculateThrustRequired(velocity, rho, lSlopeConstants, dSlopeConstants, totalWeight, S);
@@ -215,13 +281,13 @@ function runAnalysis(event) {
                 let upperThrottle = null;
             
                 // Sort throttle keys numerically
-                let throttleKeys = Object.keys(motorData[airspeed])
+                let throttleKeys = Object.keys(lookupTable[airspeed])
                     .map(Number) // Convert to numbers
                     .sort((a, b) => a - b); // Sort ascending
             
                 for (let i = 0; i < throttleKeys.length; i++) {
                     let throttle = throttleKeys[i];
-                    let thrust = motorData[airspeed][throttle].cT * rho * motorData[airspeed][throttle].rpm**2 * motorData[airspeed][throttle].diameter**4; // equation to relate by air density
+                    let thrust = lookupTable[airspeed][throttle].Ct * rho * lookupTable[airspeed][throttle].rpm**2 * lookupTable[airspeed][throttle].diameter**4; // equation to relate by air density
                     if (thrust < dragOz) {
                         lowerThrottle = throttle; // Keep updating lower bound
                     } else {
@@ -230,16 +296,16 @@ function runAnalysis(event) {
                     }
                 }
 
-                let maxThrust = motorData[airspeed]["100"].cT * rho * motorData[airspeed]["100"].rpm**2 * motorData[airspeed]["100"].diameter**4; // equation to relate by air density
+                let maxThrust = lookupTable[airspeed]["100"].Ct * rho * lookupTable[airspeed]["100"].rpm**2 * lookupTable[airspeed]["100"].diameter**4; // equation to relate by air density
             
                 // Handle edge cases where no bounds were found
                 if (lowerThrottle === null) lowerThrottle = throttleKeys[0]; // Lowest available throttle
                 if (upperThrottle === null) upperThrottle = throttleKeys[throttleKeys.length - 1]; // Highest available throttle
 
                 // Interpolate Data to get exact throttle setting and efficiency
-                throttleSetting = interpolate(dragOz, motorData[airspeed][lowerThrottle].thrust, motorData[airspeed][upperThrottle].thrust, lowerThrottle, upperThrottle);
-                efficiencySetting = interpolate(throttleSetting, lowerThrottle, upperThrottle, motorData[airspeed][lowerThrottle].efficiency, motorData[airspeed][upperThrottle].efficiency);
-                currentNeeded = interpolate(throttleSetting, lowerThrottle, upperThrottle, motorData[airspeed][lowerThrottle].current, motorData[airspeed][upperThrottle].current);
+                throttleSetting = interpolate(dragOz, lookupTable[airspeed][lowerThrottle].thrust, lookupTable[airspeed][upperThrottle].thrust, lowerThrottle, upperThrottle);
+                efficiencySetting = interpolate(throttleSetting, lowerThrottle, upperThrottle, lookupTable[airspeed][lowerThrottle].efficiency, lookupTable[airspeed][upperThrottle].efficiency);
+                currentNeeded = interpolate(throttleSetting, lowerThrottle, upperThrottle, lookupTable[airspeed][lowerThrottle].current, lookupTable[airspeed][upperThrottle].current);
 
                 // Now calculate endurance
                 endurance = caclulateEndurance(cLThreeHalfD, batteryEnergy, rho, S, totalWeight, efficiencySetting);
@@ -323,7 +389,7 @@ function runAnalysis(event) {
         localStorage.setItem("maxResults", JSON.stringify(maxVals));
 
         console.log("Successfully uploaded results");
-        window.location.href = "results.html"
+        window.location.href = "results.html";
     });
 }
 

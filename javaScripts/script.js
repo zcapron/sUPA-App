@@ -78,7 +78,6 @@ function pullFormData() {
         const dryWeight = parseFloat(document.getElementById("weight").value);
         const payloadWeight = parseFloat(document.getElementById("pWeight").value);
 
-        return [S, lSlopeConstants, dSlopeConstants, dryWeight, payloadWeight]
     } catch (error) {
         console.error("Error in pullFormData:", error);
         window.alert("Error in analysis:" + error.message);

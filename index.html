@@ -15,33 +15,52 @@
         <h3>StarCCM Data</h3>
         
         <label for="planformArea">Planform Area (ft<sup>2</sup>):</label>
-        <input type="text" id="planformArea" ><br>
+        <input type="text" id="planformArea"><br>
     
         <label for="lSlope">Coefficient Lift Curve Slope:</label>
-        <input type="text" id="lSlope" > x + <input type="text" id="lIntercept" ><br>
+        <input type="text" id="lSlope"> x + <input type="text" id="lIntercept"><br>
     
         <label for="dC1">Coefficient Drag Curve Equation:</label><br>
-        <input type="text" id="dC1" > x<sup>4</sup> +
-        <input type="text" id="dC2" > x<sup>3</sup> +
-        <input type="text" id="dC3" > x<sup>2</sup> +
-        <input type="text" id="dC4" > x +
-        <input type="text" id="dC5" ><br>
+        <input type="text" id="dC1"> x<sup>4</sup> +
+        <input type="text" id="dC2"> x<sup>3</sup> +
+        <input type="text" id="dC3"> x<sup>2</sup> +
+        <input type="text" id="dC4"> x +
+        <input type="text" id="dC5"><br>
     
         <h3>Other Aircraft Information</h3>
         <label for="weight">Aircraft Dry Weight (lb): </label>
-        <input type="text" id="weight" ><br>
+        <input type="text" id="weight"><br>
     
         <label for="pWeight">Payload Weight (0-1.5lbs): </label>
-        <input type="text" id="pWeight" ><br>
+        <input type="text" id="pWeight"><br>
     
         <p>Propulsion Setup</p>
         
-        <!-- File Upload Section for Motor Data -->
-        <label for="fileInput">Please input Motocalc folder with desired throttle data(s):</label>
-        <input type="file" id="folderInput" name="folderInput" webkitdirectory directory><br>
-    
+        <label for="uploadToggle">Upload Propulsion Data?</label>
+        <input type="checkbox" id="uploadToggle"><br><br>
+        
+        <div id="fileUploadSection" style="display: none;">
+            <label for="batterymAh">Battery Capacity (mAh)</label>
+            <input type="text" id="batterymAh"><br>
+            <label for="batteryCells">Battery Cell(s)</label>
+            <input type="text" id="batteryCells"><br> <br>
+            
+            <label for="motoNum">Number of Motor(s)</label>
+            <input type="text" id="motoNum"> <br><br>
+
+            <label for="folderInput">Please input Motocalc folder with desired throttle data(s):</label>
+            <input type="file" id="folderInput" name="folderInput" webkitdirectory directory><br><br>
+        </div>
+        
         <input type="submit" value="Run Analysis">
     </form>
+    
+    <script>
+        document.getElementById('uploadToggle').addEventListener('change', function() {
+            const fileSection = document.getElementById('fileUploadSection');
+            fileSection.style.display = this.checked ? 'block' : 'none';
+        });
+    </script>
     
     </div>
 </body>

@@ -78,6 +78,20 @@ function pullFormData() {
         const dryWeight = parseFloat(document.getElementById("weight").value);
         const payloadWeight = parseFloat(document.getElementById("pWeight").value);
 
+        // get motor data
+        const motorToggle = document.getElementById("uploadToggle").checked;
+        let batteryEnergy = NaN;
+        let motorNum = 0;
+        if (motorToggle) {
+            const mAh = parseFloat(document.getElementById("batterymAh").value);
+            const cells = parseFloat(document.getElementById("batteryCells").value);
+            batteryEnergy = mAh * cells * 4.2 / 1000; // Wh
+
+            motorNum = parseInt(document.getElementById("motoNum").value);
+        }
+
+        return [S, lSlopeConstants, dSlopeConstants, dryWeight, payloadWeight, motorToggle, batteryEnergy, motorNum];
+
     } catch (error) {
         console.error("Error in pullFormData:", error);
         window.alert("Error in analysis:" + error.message);
@@ -207,7 +221,6 @@ function calculateThrustRequired(velocity, rho, liftCoeffs, dragCoeffs, weight, 
     const coefficientLift = weight / (dynamicPressure * planformArea);
     const AoA = (coefficientLift - liftCoeffs[1]) / liftCoeffs[0];
     const coefficientDrag = dragCoeffs[0] * AoA**4 + dragCoeffs[1] * AoA**3 + dragCoeffs[2] * AoA**2 + dragCoeffs[3] * AoA + dragCoeffs[4];
-    
     let dragLb = coefficientDrag * dynamicPressure * planformArea;
     if (dragLb < 0) {
         dragLb = -dragLb;
@@ -239,27 +252,168 @@ function runAnalysis(event) {
 
     // Gather input data
     const formData = pullFormData();
+    console.log(formData);
     if (!formData) {
         console.error("Form data could not be retrieved.");
         return; // Stop execution if form data is invalid
     }
-    const [S, lSlopeConstants, dSlopeConstants, dryWeight, payloadWeight] = formData;
+    const [S, lSlopeConstants, dSlopeConstants, dryWeight, payloadWeight, motorToggle, batteryEnergy, motorNum] = formData;
     const totalWeight = dryWeight + payloadWeight
 
+    if (motorToggle) {
+        pullMotorData().then(lookupTable => {
 
-    pullMotorData().then(lookupTable => {
+            // Create object to save information calculated
+            let results = {};
+            let maxEndurance = 0;
+            let maxEnduranceVelocity = 0;
+            let maxEnduranceAltitude = 0;
+            let maxCalcVelocity = 0;
+            let maxCalcVelocityAltitude = 0;
+            let minCalcVelocity = 100;
+            let minCalcVelocityAltitude = 0;
+            let maxVals = {};
+            let maxAltitude = 0;
 
+            // Create loop to iterate through altitudes
+            for (let i=0; i < airDensities.length; i++) {
+                let rho = airDensities[i]
+                let altitude = i * 500;
+
+                if (!results[altitude]) {
+                    results[altitude] = {};
+                }
+
+                let j = 0
+                // Find throttle setting for required thrust
+                for (let airspeed in lookupTable) {
+                    const velocity = airspeed;
+                    const [dynamicPressure, coefficientLift, AoA, coefficientDrag, dragLb, dragOz, lOverD, cLThreeHalfD] =
+                        calculateThrustRequired(velocity, rho, lSlopeConstants, dSlopeConstants, totalWeight, S);
+                    
+                    let lowerThrottle = null;
+                    let upperThrottle = null;
+                
+                    // Sort throttle keys numerically
+                    let throttleKeys = Object.keys(lookupTable[airspeed])
+                        .map(Number) // Convert to numbers
+                        .sort((a, b) => a - b); // Sort ascending
+                
+                    for (let i = 0; i < throttleKeys.length; i++) {
+                        let throttle = throttleKeys[i];
+                        let thrust = lookupTable[airspeed][throttle].Ct * rho * lookupTable[airspeed][throttle].rpm**2 * lookupTable[airspeed][throttle].diameter**4 * motorNum; // equation to relate by air density
+                        if (thrust < dragOz) {
+                            lowerThrottle = throttle; // Keep updating lower bound
+                        } else {
+                            upperThrottle = throttle; // First throttle that exceeds dragOz
+                            break; // Stop searching once we find the upper bound
+                        }
+                    }
+
+                    let maxThrust = lookupTable[airspeed]["100"].Ct * rho * lookupTable[airspeed]["100"].rpm**2 * lookupTable[airspeed]["100"].diameter**4; // equation to relate by air density
+                
+                    // Handle edge cases where no bounds were found
+                    if (lowerThrottle === null) lowerThrottle = throttleKeys[0]; // Lowest available throttle
+                    if (upperThrottle === null) upperThrottle = throttleKeys[throttleKeys.length - 1]; // Highest available throttle
+
+                    // Interpolate Data to get exact throttle setting and efficiency
+                    throttleSetting = interpolate(dragOz, lookupTable[airspeed][lowerThrottle].thrust, lookupTable[airspeed][upperThrottle].thrust, lowerThrottle, upperThrottle);
+                    efficiencySetting = interpolate(throttleSetting, lowerThrottle, upperThrottle, lookupTable[airspeed][lowerThrottle].efficiency, lookupTable[airspeed][upperThrottle].efficiency);
+                    currentNeeded = interpolate(throttleSetting, lowerThrottle, upperThrottle, lookupTable[airspeed][lowerThrottle].current, lookupTable[airspeed][upperThrottle].current) * motorNum;
+
+                    // Now calculate endurance
+                    endurance = caclulateEndurance(cLThreeHalfD, batteryEnergy, rho, S, totalWeight, efficiencySetting);
+                    if (isNaN(endurance) || endurance < 0) {
+                        endurance = 0;
+                    }
+
+                    if (endurance > maxEndurance && AoA < 7){ // lower than estimated stall angle for factor of saftey
+                        maxEndurance = endurance;
+                        maxEnduranceVelocity = airspeed;
+                        maxEnduranceAltitude = altitude;
+                    } 
+
+                    // checking for stall speed 
+
+                    if (AoA < 10.5 && airspeed < minCalcVelocity && dragOz < maxThrust) {
+                        minCalcVelocity = airspeed;
+                        minCalcVelocityAltitude = altitude;
+                    }
+
+                    // checking for max speed
+                    if (AoA < 10.5 && airspeed > maxCalcVelocity && dragOz < maxThrust) {
+                        maxCalcVelocity = airspeed;
+                        maxCalcVelocityAltitude = altitude;
+                    }
+
+                    // check if thrust is available for setting
+                    if (dragOz > maxThrust) {
+                        throttleSetting = NaN
+                    } else {
+                        maxAltitude = altitude
+                    }
+
+                    // Ignore first 10 airspeeds
+                    if (j < 10) {
+                        j++;
+                        continue;
+                    }
+
+                    // create a results object to send to localstorage
+                    results[altitude][airspeed] = {
+                        throttle: throttleSetting.toFixed(0),
+                        efficiency: efficiencySetting.toFixed(1),
+                        dynamicPressure: dynamicPressure.toFixed(2),
+                        coefficientLift: coefficientLift.toFixed(2),
+                        coefficientDrag: coefficientDrag.toFixed(2),
+                        AoA: AoA.toFixed(0),
+                        dragOz: dragOz.toFixed(2),
+                        lOverD: lOverD.toFixed(2),
+                        cLThreeHalfD: cLThreeHalfD.toFixed(2),
+                        endurance: endurance.toFixed(0),
+                        thrust: maxThrust.toFixed(2),
+                        current: currentNeeded.toFixed(2)
+                    }
+                    console.log(endurance)
+
+                }
+                
+
+            }
+            // create maxval object to push to localstorage
+            maxVals = {
+                endurance: {
+                    maxEndurance: maxEndurance,
+                    maxEnduranceVelocity: maxEnduranceVelocity,
+                    maxEnduranceAltitude: maxEnduranceAltitude
+                },
+                maxSpeed: {
+                    maxCalcVelocity: maxCalcVelocity,
+                    maxCalcVelocityAltitude: maxCalcVelocityAltitude
+                },
+                minSpeed: {
+                    minCalcVelocity: minCalcVelocity,
+                    minCalcVelocityAltitude: minCalcVelocityAltitude
+                },
+                maxAltitude: maxAltitude
+            };
+            
+
+            // Store results in localStorage
+            localStorage.setItem("analysisResults", JSON.stringify(results));
+            localStorage.setItem("maxResults", JSON.stringify(maxVals));
+            localStorage.setItem("motorToggle", true);
+
+            console.log("Successfully uploaded results");
+            window.location.href = "results.html";
+        });
+    } else {
+        const airspeedValues = [...Array(66).keys()]; // Airspeed from 0-65 mph
         // Create object to save information calculated
         let results = {};
-        let maxEndurance = 0;
-        let maxEnduranceVelocity = 0;
-        let maxEnduranceAltitude = 0;
-        let maxCalcVelocity = 0;
-        let maxCalcVelocityAltitude = 0;
         let minCalcVelocity = 100;
         let minCalcVelocityAltitude = 0;
         let maxVals = {};
-        let maxAltitude = 0;
 
         // Create loop to iterate through altitudes
         for (let i=0; i < airDensities.length; i++) {
@@ -272,72 +426,19 @@ function runAnalysis(event) {
 
             let j = 0
             // Find throttle setting for required thrust
-            for (let airspeed in lookupTable) {
+            for (let airspeed in airspeedValues) {
                 const velocity = airspeed;
+
                 const [dynamicPressure, coefficientLift, AoA, coefficientDrag, dragLb, dragOz, lOverD, cLThreeHalfD] =
                     calculateThrustRequired(velocity, rho, lSlopeConstants, dSlopeConstants, totalWeight, S);
-                
-                let lowerThrottle = null;
-                let upperThrottle = null;
-            
-                // Sort throttle keys numerically
-                let throttleKeys = Object.keys(lookupTable[airspeed])
-                    .map(Number) // Convert to numbers
-                    .sort((a, b) => a - b); // Sort ascending
-            
-                for (let i = 0; i < throttleKeys.length; i++) {
-                    let throttle = throttleKeys[i];
-                    let thrust = lookupTable[airspeed][throttle].Ct * rho * lookupTable[airspeed][throttle].rpm**2 * lookupTable[airspeed][throttle].diameter**4; // equation to relate by air density
-                    if (thrust < dragOz) {
-                        lowerThrottle = throttle; // Keep updating lower bound
-                    } else {
-                        upperThrottle = throttle; // First throttle that exceeds dragOz
-                        break; // Stop searching once we find the upper bound
-                    }
-                }
-
-                let maxThrust = lookupTable[airspeed]["100"].Ct * rho * lookupTable[airspeed]["100"].rpm**2 * lookupTable[airspeed]["100"].diameter**4; // equation to relate by air density
-            
-                // Handle edge cases where no bounds were found
-                if (lowerThrottle === null) lowerThrottle = throttleKeys[0]; // Lowest available throttle
-                if (upperThrottle === null) upperThrottle = throttleKeys[throttleKeys.length - 1]; // Highest available throttle
-
-                // Interpolate Data to get exact throttle setting and efficiency
-                throttleSetting = interpolate(dragOz, lookupTable[airspeed][lowerThrottle].thrust, lookupTable[airspeed][upperThrottle].thrust, lowerThrottle, upperThrottle);
-                efficiencySetting = interpolate(throttleSetting, lowerThrottle, upperThrottle, lookupTable[airspeed][lowerThrottle].efficiency, lookupTable[airspeed][upperThrottle].efficiency);
-                currentNeeded = interpolate(throttleSetting, lowerThrottle, upperThrottle, lookupTable[airspeed][lowerThrottle].current, lookupTable[airspeed][upperThrottle].current);
-
-                // Now calculate endurance
-                endurance = caclulateEndurance(cLThreeHalfD, batteryEnergy, rho, S, totalWeight, efficiencySetting);
-                if (isNaN(endurance) || endurance < 0) {
-                    endurance = 0;
-                }
-
-                if (endurance > maxEndurance && AoA < 7){ // lower than estimated stall angle for factor of saftey
-                    maxEndurance = endurance;
-                    maxEnduranceVelocity = airspeed;
-                    maxEnduranceAltitude = altitude;
-                } 
 
                 // checking for stall speed 
 
-                if (AoA < 10.5 && airspeed < minCalcVelocity && dragOz < maxThrust) {
+                if (AoA < 10.5 && airspeed < minCalcVelocity) {
                     minCalcVelocity = airspeed;
                     minCalcVelocityAltitude = altitude;
                 }
 
-                // checking for max speed
-                if (AoA < 10.5 && airspeed > maxCalcVelocity && dragOz < maxThrust) {
-                    maxCalcVelocity = airspeed;
-                    maxCalcVelocityAltitude = altitude;
-                }
-
-                // check if thrust is available for setting
-                if (dragOz > maxThrust) {
-                    throttleSetting = NaN
-                } else {
-                    maxAltitude = altitude
-                }
 
                 // Ignore first 10 airspeeds
                 if (j < 10) {
@@ -347,8 +448,6 @@ function runAnalysis(event) {
 
                 // create a results object to send to localstorage
                 results[altitude][airspeed] = {
-                    throttle: throttleSetting.toFixed(0),
-                    efficiency: efficiencySetting.toFixed(1),
                     dynamicPressure: dynamicPressure.toFixed(2),
                     coefficientLift: coefficientLift.toFixed(2),
                     coefficientDrag: coefficientDrag.toFixed(2),
@@ -356,11 +455,7 @@ function runAnalysis(event) {
                     dragOz: dragOz.toFixed(2),
                     lOverD: lOverD.toFixed(2),
                     cLThreeHalfD: cLThreeHalfD.toFixed(2),
-                    endurance: endurance.toFixed(0),
-                    thrust: maxThrust.toFixed(2),
-                    current: currentNeeded.toFixed(2)
                 }
-                console.log(endurance)
 
             }
             
@@ -368,29 +463,21 @@ function runAnalysis(event) {
         }
         // create maxval object to push to localstorage
         maxVals = {
-            endurance: {
-                maxEndurance: maxEndurance,
-                maxEnduranceVelocity: maxEnduranceVelocity,
-                maxEnduranceAltitude: maxEnduranceAltitude
-            },
-            maxSpeed: {
-                maxCalcVelocity: maxCalcVelocity,
-                maxCalcVelocityAltitude: maxCalcVelocityAltitude
-            },
             minSpeed: {
                 minCalcVelocity: minCalcVelocity,
                 minCalcVelocityAltitude: minCalcVelocityAltitude
-            },
-            maxAltitude: maxAltitude
+            }
         };
 
+
         // Store results in localStorage
-        localStorage.setItem("analysisResults", JSON.stringify(results));
+        localStorage.setItem("analysisResultsNoThrust", JSON.stringify(results));
         localStorage.setItem("maxResults", JSON.stringify(maxVals));
+        localStorage.setItem("motorToggle", false);
 
         console.log("Successfully uploaded results");
         window.location.href = "results.html";
-    });
+    }
 }
 
 document.getElementById("inputForm").addEventListener("submit", runAnalysis);

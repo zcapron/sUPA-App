@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let results;
         let maxResults;
         console.log("loadResults motorToggle", motorToggle)
-        if (motorToggle) {
+        if (motorToggle == true) {
             results = JSON.parse(localStorage.getItem("analysisResults"));
             maxResults = JSON.parse(localStorage.getItem("maxResults"));
             maxEndurance = maxResults.endurance.maxEndurance;
@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         
         // update requirements as needed
-        if (motorToggle) {
+        if (motorToggle == true) {
             // requirement 1
             if (requirements[0][1] < maxEndurance ) {
                 req1.classList.add("objective");
@@ -157,7 +157,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function updateTable() {
         let results;
-        if (motorToggle){
+        if (motorToggle == true){
             results = JSON.parse(localStorage.getItem("analysisResults"));
         } else {
             results = JSON.parse(localStorage.getItem("analysisResultsNoThrust"));
@@ -171,7 +171,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 let data = results[selectedAltitude][velocity];
 
 
-                if (data.AoA > 10.5 || isNaN(data.throttle) && motorToggle) continue;
+                if (data.AoA > 10.5 || isNaN(data.throttle) && motorToggle == true) continue;
 
                 let row = document.createElement("tr");
 
@@ -195,7 +195,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function drawChart() {
         let results;
         
-        if (motorToggle) {
+        if (motorToggle == true) {
             results = JSON.parse(localStorage.getItem("analysisResults")) || {};
         } else {
             results = JSON.parse(localStorage.getItem("analysisResultsNoThrust")) || {};
@@ -209,7 +209,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const thrustAvailable = [];
         const thrustRequired = [];
         const current = [];
-        if (motorToggle) {
+        if (motorToggle == true) {
             for (let velocity in results[selectedAltitude]) {
                 // Skip first 10 vel
                 if (velocity < 16) continue;

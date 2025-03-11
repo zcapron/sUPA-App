@@ -320,7 +320,7 @@ function runAnalysis(event) {
                     if (upperThrottle === null) upperThrottle = throttleKeys[throttleKeys.length - 1]; // Highest available throttle
 
                     // Interpolate Data to get exact throttle setting and efficiency
-                    throttleSetting = interpolate(dragOz, lookupTable[airspeed][lowerThrottle].thrust, lookupTable[airspeed][upperThrottle].thrust, lowerThrottle, upperThrottle);
+                    throttleSetting = interpolate(dragOz / motorNum, lookupTable[airspeed][lowerThrottle].thrust, lookupTable[airspeed][upperThrottle].thrust, lowerThrottle, upperThrottle);
                     efficiencySetting = interpolate(throttleSetting, lowerThrottle, upperThrottle, lookupTable[airspeed][lowerThrottle].efficiency, lookupTable[airspeed][upperThrottle].efficiency);
                     currentNeeded = interpolate(throttleSetting, lowerThrottle, upperThrottle, lookupTable[airspeed][lowerThrottle].current, lookupTable[airspeed][upperThrottle].current);
                     currentNeeded = currentNeeded * motorNum;
@@ -340,13 +340,13 @@ function runAnalysis(event) {
 
                     // checking for stall speed 
 
-                    if (AoA < 10.5 && airspeed < minCalcVelocity && dragOz < maxThrust) {
+                    if (AoA < 11 && airspeed < minCalcVelocity && dragOz < maxThrust) {
                         minCalcVelocity = airspeed;
                         minCalcVelocityAltitude = altitude;
                     }
 
                     // checking for max speed
-                    if (AoA < 10.5 && airspeed > maxCalcVelocity && dragOz < maxThrust) {
+                    if (AoA < 11 && airspeed > maxCalcVelocity && dragOz < maxThrust) {
                         maxCalcVelocity = airspeed;
                         maxCalcVelocityAltitude = altitude;
                     }

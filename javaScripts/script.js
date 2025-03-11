@@ -85,7 +85,8 @@ function pullFormData() {
         if (motorToggle) {
             const mAh = parseFloat(document.getElementById("batterymAh").value);
             const cells = parseFloat(document.getElementById("batteryCells").value);
-            batteryEnergy = mAh * cells * 4.2 / 1000; // Wh
+            //batteryEnergy = mAh * cells * 4.2 / 1000; // Wh
+            batteryEnergy = mAh / 1000; // Ah
 
             motorNum = parseInt(document.getElementById("motoNum").value);
         }
@@ -236,8 +237,9 @@ function calculateThrustRequired(velocity, rho, liftCoeffs, dragCoeffs, weight, 
     return [dynamicPressure, coefficientLift, AoA, coefficientDrag, dragLb, dragOz, lOverD, cLThreeHalfD];
 }
 
-function caclulateEndurance(clcdRatio, batteryEnergy, rho, planformArea, weight, efficiency) {
-    let enduranceCalculated = (batteryEnergy * 2655.25 * (efficiency/100) * clcdRatio * (rho * planformArea)**0.5) / (2**0.5 * weight**(3/2)) / 60; //minutes
+function caclulateEndurance(batteryEnergy, currentDraw) {
+    //let enduranceCalculated = (batteryEnergy * 2655.25 * (efficiency/100) * clcdRatio * (rho * planformArea)**0.5) / (2**0.5 * weight**(3/2)) / 60; //minutes
+    let enduranceCalculated = batteryEnergy * 60 / currentDraw; // minutes
     return enduranceCalculated;
 }
 
@@ -322,7 +324,8 @@ function runAnalysis(event) {
                     currentNeeded = interpolate(throttleSetting, lowerThrottle, upperThrottle, lookupTable[airspeed][lowerThrottle].current, lookupTable[airspeed][upperThrottle].current) * motorNum;
 
                     // Now calculate endurance
-                    endurance = caclulateEndurance(cLThreeHalfD, batteryEnergy, rho, S, totalWeight, efficiencySetting);
+                    //endurance = caclulateEndurance(cLThreeHalfD, batteryEnergy, rho, S, totalWeight, efficiencySetting);
+                    endurance = caclulateEndurance(batteryEnergy, currentNeeded);
                     if (isNaN(endurance) || endurance < 0) {
                         endurance = 0;
                     }

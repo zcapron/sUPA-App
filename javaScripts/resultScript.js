@@ -53,7 +53,8 @@ document.addEventListener("DOMContentLoaded", function () {
         let results;
         let maxResults;
         console.log("loadResults motorToggle", motorToggle)
-        if (motorToggle == true) {
+        if (motorToggle == "true") {
+            console.log("in first")
             results = JSON.parse(localStorage.getItem("analysisResults"));
             maxResults = JSON.parse(localStorage.getItem("maxResults"));
             maxEndurance = maxResults.endurance.maxEndurance;
@@ -64,7 +65,8 @@ document.addEventListener("DOMContentLoaded", function () {
             minCalcVelocity = maxResults.minSpeed.minCalcVelocity;
             minCalcVelocityAltitude = maxResults.minSpeed.minCalcVelocityAltitude;
             maxAltitude = maxResults.maxAltitude;
-        } else {
+        } else if (motorToggle == "false"){
+            console.log("in second")
             results = JSON.parse(localStorage.getItem("analysisResultsNoThrust")) || {};
             maxResults = JSON.parse(localStorage.getItem("maxResults")) || {};
             minCalcVelocity = maxResults.minSpeed.minCalcVelocity;
@@ -74,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         
         // update requirements as needed
-        if (motorToggle == true) {
+        if (motorToggle == "true") {
             // requirement 1
             if (requirements[0][1] < maxEndurance ) {
                 req1.classList.add("objective");
@@ -157,7 +159,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function updateTable() {
         let results;
-        if (motorToggle == true){
+        if (motorToggle == "true"){
             results = JSON.parse(localStorage.getItem("analysisResults"));
         } else {
             results = JSON.parse(localStorage.getItem("analysisResultsNoThrust"));
@@ -184,6 +186,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     <td>${data.dragOz}</td>
                     <td>${data.lOverD}</td>
                     <td>${data.endurance}</td>
+                    <td>${data.current}</td>
                     <td>${data.throttle}</td>
                 `;
 
@@ -195,7 +198,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function drawChart() {
         let results;
         
-        if (motorToggle == true) {
+        if (motorToggle == "true") {
             results = JSON.parse(localStorage.getItem("analysisResults")) || {};
         } else {
             results = JSON.parse(localStorage.getItem("analysisResultsNoThrust")) || {};
@@ -209,7 +212,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const thrustAvailable = [];
         const thrustRequired = [];
         const current = [];
-        if (motorToggle == true) {
+        if (motorToggle == "true") {
             for (let velocity in results[selectedAltitude]) {
                 // Skip first 10 vel
                 if (velocity < 16) continue;

@@ -303,7 +303,8 @@ function runAnalysis(event) {
                 
                     for (let i = 0; i < throttleKeys.length; i++) {
                         let throttle = throttleKeys[i];
-                        let thrust = lookupTable[airspeed][throttle].Ct * rho * lookupTable[airspeed][throttle].rpm**2 * lookupTable[airspeed][throttle].diameter**4 * motorNum; // equation to relate by air density
+                        let thrust = lookupTable[airspeed][throttle].Ct * rho * lookupTable[airspeed][throttle].rpm**2 * lookupTable[airspeed][throttle].diameter**4; // equation to relate by air density
+                        thrust = thrust * motorNum;
                         if (thrust < dragOz) {
                             lowerThrottle = throttle; // Keep updating lower bound
                         } else {
@@ -312,7 +313,7 @@ function runAnalysis(event) {
                         }
                     }
 
-                    let maxThrust = lookupTable[airspeed]["100"].Ct * rho * lookupTable[airspeed]["100"].rpm**2 * lookupTable[airspeed]["100"].diameter**4; // equation to relate by air density
+                    let maxThrust = lookupTable[airspeed]["100"].Ct * rho * lookupTable[airspeed]["100"].rpm**2 * lookupTable[airspeed]["100"].diameter**4 * motorNum; // equation to relate by air density
                 
                     // Handle edge cases where no bounds were found
                     if (lowerThrottle === null) lowerThrottle = throttleKeys[0]; // Lowest available throttle
@@ -321,7 +322,8 @@ function runAnalysis(event) {
                     // Interpolate Data to get exact throttle setting and efficiency
                     throttleSetting = interpolate(dragOz, lookupTable[airspeed][lowerThrottle].thrust, lookupTable[airspeed][upperThrottle].thrust, lowerThrottle, upperThrottle);
                     efficiencySetting = interpolate(throttleSetting, lowerThrottle, upperThrottle, lookupTable[airspeed][lowerThrottle].efficiency, lookupTable[airspeed][upperThrottle].efficiency);
-                    currentNeeded = interpolate(throttleSetting, lowerThrottle, upperThrottle, lookupTable[airspeed][lowerThrottle].current, lookupTable[airspeed][upperThrottle].current) * motorNum;
+                    currentNeeded = interpolate(throttleSetting, lowerThrottle, upperThrottle, lookupTable[airspeed][lowerThrottle].current, lookupTable[airspeed][upperThrottle].current);
+                    currentNeeded = currentNeeded * motorNum;
 
                     // Now calculate endurance
                     //endurance = caclulateEndurance(cLThreeHalfD, batteryEnergy, rho, S, totalWeight, efficiencySetting);

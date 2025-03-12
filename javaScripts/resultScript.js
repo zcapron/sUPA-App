@@ -123,7 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             document.getElementById("resultLog").innerHTML = `
             Max endurance is ${maxEndurance.toFixed(0)} minutes traveling at ${maxEnduranceVelocity} mph at ${maxEnduranceAltitude.toFixed(0)} ft (msl) pulling ${maxEnduranceAmps.toFixed(2)} amps.<br>
-            Battery capacity required for Threshold: ${batteryThreshold.toFixed(0)}mAh, Objective: ${batteryObjective.toFixed(0)}mAh,<br>
+            Battery capacity required for: Threshold: ${batteryThreshold.toFixed(0)}mAh, Objective: ${batteryObjective.toFixed(0)}mAh.<br>
             Max speed is ${maxCalcVelocity} mph at ${maxCalcVelocityAltitude.toFixed(0)} ft (msl).<br>
             Min stall speed is ${minCalcVelocity} mph at ${minCalcVelocityAltitude.toFixed(0)} ft (msl).<br>
             Maximum calculated altitude is ${maxAltitude} ft (msl).`;

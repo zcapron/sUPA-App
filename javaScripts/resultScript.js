@@ -60,6 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
             maxEndurance = maxResults.endurance.maxEndurance;
             maxEnduranceVelocity = maxResults.endurance.maxEnduranceVelocity;
             maxEnduranceAltitude = maxResults.endurance.maxEnduranceAltitude;
+            maxEnduranceAmps = maxResults.endurance.maxEnduranceAmps;
             maxCalcVelocity = maxResults.maxSpeed.maxCalcVelocity;
             maxCalcVelocityAltitude = maxResults.maxSpeed.maxCalcVelocityAltitude;
             minCalcVelocity = maxResults.minSpeed.minCalcVelocity;
@@ -110,14 +111,13 @@ document.addEventListener("DOMContentLoaded", function () {
             } else {
                 req4.classList.add("notMet");
                 req4.innerHTML += "Not Met";
-
-                document.getElementById("resultLog").innerHTML = `
-                Max endurance is ${maxEndurance.toFixed(0)} minutes traveling at ${maxEnduranceVelocity} mph at ${maxEnduranceAltitude.toFixed(0)} ft (msl).<br>
-                Max speed is ${maxCalcVelocity} mph at ${maxCalcVelocityAltitude.toFixed(0)} ft (msl).<br>
-                Min stall speed is ${minCalcVelocity} mph at ${minCalcVelocityAltitude.toFixed(0)} ft (msl).<br>
-                Maximum calculated altitude is ${maxAltitude} ft (msl).`;
-
             }
+            document.getElementById("resultLog").innerHTML = `
+            Max endurance is ${maxEndurance.toFixed(0)} minutes traveling at ${maxEnduranceVelocity} mph at ${maxEnduranceAltitude.toFixed(0)} ft (msl) pulling ${maxEnduranceAmps.toFixed(2)} amps.<br>
+            Max speed is ${maxCalcVelocity} mph at ${maxCalcVelocityAltitude.toFixed(0)} ft (msl).<br>
+            Min stall speed is ${minCalcVelocity} mph at ${minCalcVelocityAltitude.toFixed(0)} ft (msl).<br>
+            Maximum calculated altitude is ${maxAltitude} ft (msl).`;
+
         } else {
             req1.innerHTML += ("Not Available");
             req2.innerHTML += ("Not Available");
@@ -213,6 +213,12 @@ document.addEventListener("DOMContentLoaded", function () {
         const thrustRequired = [];
         const current = [];
         if (motorToggle == "true") {
+            // pull data for propulsion information
+            const propInfo = JSON.parse(localStorage.getItem("propulsionInfo")) || {};
+            const infoBar = document.getElementById("informationBar");
+
+            infoBar.innerHTML = `Motor(s): ${propInfo.motoNum} ${propInfo.motor} | Propellor: ${propInfo.propellor} | Battery: ${propInfo.battery} ${propInfo.batteryCapacity}mAh`
+
             for (let velocity in results[selectedAltitude]) {
                 // Skip first 10 vel
                 if (velocity < 16) continue;

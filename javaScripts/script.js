@@ -25,7 +25,7 @@ const airDensities = [
     0.0017552, // 10000 ft
     0.0017277, // 10500 ft
     0.0017006, // 11000 ft
-    0.0016737, // 11500 ft
+   /* 0.0016737, // 11500 ft
     0.0016472, // 12000 ft
     0.0016209, // 12500 ft
     0.0015950, // 13000 ft
@@ -52,7 +52,7 @@ const airDensities = [
     0.0011088, // 23500 ft
     0.0010881, // 24000 ft
     0.0010676, // 24500 ft
-    0.0010473  // 25000 ft
+    0.0010473  // 25000 ft */
 ];
 
 
@@ -83,15 +83,10 @@ function pullFormData() {
         let batteryEnergy = NaN;
         let motorNum = 0;
         if (motorToggle) {
-            const mAh = parseFloat(document.getElementById("batterymAh").value);
-            const cells = parseFloat(document.getElementById("batteryCells").value);
-            //batteryEnergy = mAh * cells * 4.2 / 1000; // Wh
-            batteryEnergy = mAh / 1000; // Ah
-
             motorNum = parseInt(document.getElementById("motoNum").value);
         }
 
-        return [S, lSlopeConstants, dSlopeConstants, dryWeight, payloadWeight, motorToggle, batteryEnergy, motorNum];
+        return [S, lSlopeConstants, dSlopeConstants, dryWeight, payloadWeight, motorToggle, motorNum];
 
     } catch (error) {
         console.error("Error in pullFormData:", error);
@@ -102,7 +97,7 @@ function pullFormData() {
 
 
 
-function pullMotorData() {
+function pullMotorData(motoNum) {
     return new Promise((resolve, reject) => {
         const files = document.getElementById("folderInput").files;
         if (!files.length) {
@@ -114,12 +109,13 @@ function pullMotorData() {
         console.log(files[0]);
         const airspeedValues = [...Array(66).keys()]; // Airspeed from 0-65 mph
         let lookupTable = {};
+        let batteryEnergy = 0;
+        let batteryCells = 0;
 
         // Initialize empty throttle objects for each airspeed
         airspeedValues.forEach(speed => lookupTable[speed] = {});
         let filesProcessed = 0;
 
-        // Use Promise.all to ensure that all files are processed before resolving
         const filePromises = [...files].map(file => {
             return new Promise((fileResolve, fileReject) => {
                 const reader = new FileReader();
@@ -128,11 +124,14 @@ function pullMotorData() {
                     let motor = '', battery = '', propeller = '', altitude = 0;
                     let dataStart = 0;
 
-                    // Process metadata from the file
                     for (let i = 0; i < lines.length; i++) {
                         const line = lines[i].trim();
                         if (line.includes('Motor:')) motor = line.split(': ')[1].split(';')[0].trim();
-                        if (line.includes('Battery:')) battery = line.split(': ')[1].split(';')[0].trim();
+                        if (line.includes('Battery:')) {
+                            battery = line.split(': ')[1].split(';')[0].trim();
+                            batteryEnergy = parseFloat(line.split(';')[2].split('@')[0].split('mAh')[0].trim()); // Ensure it's a number
+                            batteryCells = parseInt(line.split(';')[1].split('cells')[0].trim(), 10);
+                        }
                         if (line.includes('Drive System:')) propeller = line.split(';')[1].split(' ')[1].trim();
                         if (line.includes('ft above Sea Level')) altitude = parseInt(line.split('ft')[0].trim(), 10);
                         if (i >= 12 && line.match(/\d/)) { dataStart = i; break; }
@@ -142,7 +141,6 @@ function pullMotorData() {
                     let throttle = file.name.split('.')[0];
                     let propDiameter = parseInt(propeller.split('x')[0]);
 
-                    // Process flight data and organize by airspeed and throttle
                     for (let i = dataStart; i < lines.length; i++) {
                         const columns = lines[i].trim().split(/\s+/);
                         if (columns.length < 12 || parseFloat(columns[12]) < 1) break;
@@ -157,7 +155,6 @@ function pullMotorData() {
 
                         let Ct = rpm !== 0 ? thrust / (propDiameter ** 4 * rpm ** 2 * density) : 0;
 
-                        // Organize by throttle setting for each airspeed
                         if (!lookupTable[airspeed][throttle]) {
                             lookupTable[airspeed][throttle] = {};
                         }
@@ -174,19 +171,27 @@ function pullMotorData() {
 
                     filesProcessed++;
 
-                    // If all files are processed, create the final JSON, removing empty airspeeds
                     if (filesProcessed === files.length) {
                         console.log("DEBUGGING - lookupTable before resolving:", lookupTable);
-                        // Remove airspeeds with no data
                         Object.keys(lookupTable).forEach(airspeed => {
                             if (Object.keys(lookupTable[airspeed]).length === 0) {
                                 delete lookupTable[airspeed];
                             }
                         });
-                        // Add a delay to allow inspection in the console
-                        setTimeout(() => {
-                            resolve(lookupTable); // Resolve the promise with the populated lookup table
-                        }, 20000); // Delay for 2 seconds before resolving
+                        const propInformation = {
+                            "motor": motor,
+                            "propellor": propeller,
+                            "battery": battery,
+                            "batteryCapacity": batteryEnergy,
+                            "motoNum": motoNum
+                        };
+                        localStorage.setItem("propulsionInfo", JSON.stringify(propInformation));
+
+                        resolve({
+                            lookupTable,
+                            batteryEnergy,
+                            batteryCells
+                        });
                     }
                     fileResolve();
                 };
@@ -196,20 +201,25 @@ function pullMotorData() {
                     fileReject(err);
                 };
 
-                reader.readAsText(file); // Read the file as text
+                reader.readAsText(file);
             });
         });
 
-        // Wait for all file reading to finish
-        Promise.all(filePromises).then(() => {
-            // All files processed, now resolve the final lookupTable
-            resolve(lookupTable);
-        }).catch(err => {
-            console.error("Error processing files:", err);
-            reject(err);
-        });
+        Promise.all(filePromises)
+            .then(() => {
+                resolve({
+                    lookupTable,
+                    batteryEnergy,
+                    batteryCells
+                });
+            })
+            .catch(err => {
+                console.error("Error processing files:", err);
+                reject(err);
+            });
     });
 }
+
 
 
 /* DATA PROCCESSING */
@@ -239,7 +249,7 @@ function calculateThrustRequired(velocity, rho, liftCoeffs, dragCoeffs, weight, 
 
 function caclulateEndurance(batteryEnergy, currentDraw) {
     //let enduranceCalculated = (batteryEnergy * 2655.25 * (efficiency/100) * clcdRatio * (rho * planformArea)**0.5) / (2**0.5 * weight**(3/2)) / 60; //minutes
-    let enduranceCalculated = batteryEnergy * 60 / currentDraw; // minutes
+    let enduranceCalculated = batteryEnergy * 60 / (currentDraw * 1000); // minutes
     return enduranceCalculated;
 }
 
@@ -259,17 +269,18 @@ function runAnalysis(event) {
         console.error("Form data could not be retrieved.");
         return; // Stop execution if form data is invalid
     }
-    const [S, lSlopeConstants, dSlopeConstants, dryWeight, payloadWeight, motorToggle, batteryEnergy, motorNum] = formData;
+    const [S, lSlopeConstants, dSlopeConstants, dryWeight, payloadWeight, motorToggle, motorNum] = formData;
     const totalWeight = dryWeight + payloadWeight
 
     if (motorToggle) {
-        pullMotorData().then(lookupTable => {
+        pullMotorData(motorNum).then(({lookupTable, batteryEnergy, batteryCells}) => {
 
             // Create object to save information calculated
             let results = {};
             let maxEndurance = 0;
             let maxEnduranceVelocity = 0;
             let maxEnduranceAltitude = 0;
+            let maxEnduranceAmps = 0;
             let maxCalcVelocity = 0;
             let maxCalcVelocityAltitude = 0;
             let minCalcVelocity = 100;
@@ -313,8 +324,8 @@ function runAnalysis(event) {
                         }
                     }
 
-                    let maxThrust = lookupTable[airspeed]["100"].Ct * rho * lookupTable[airspeed]["100"].rpm**2 * lookupTable[airspeed]["100"].diameter**4 * motorNum; // equation to relate by air density
-                
+                    let maxThrust = lookupTable[airspeed]["100"].Ct * rho * lookupTable[airspeed]["100"].rpm**2 * lookupTable[airspeed]["100"].diameter**4; // equation to relate by air density
+                    maxThrust = maxThrust * motorNum
                     // Handle edge cases where no bounds were found
                     if (lowerThrottle === null) lowerThrottle = throttleKeys[0]; // Lowest available throttle
                     if (upperThrottle === null) upperThrottle = throttleKeys[throttleKeys.length - 1]; // Highest available throttle
@@ -336,6 +347,7 @@ function runAnalysis(event) {
                         maxEndurance = endurance;
                         maxEnduranceVelocity = airspeed;
                         maxEnduranceAltitude = altitude;
+                        maxEnduranceAmps = currentNeeded;
                     } 
 
                     // checking for stall speed 
@@ -349,6 +361,8 @@ function runAnalysis(event) {
                     if (AoA < 11 && airspeed > maxCalcVelocity && dragOz < maxThrust) {
                         maxCalcVelocity = airspeed;
                         maxCalcVelocityAltitude = altitude;
+                    } else if (AoA < 11 && airspeed > maxCalcVelocity && dragOz > maxThrust) {
+                        break;
                     }
 
                     // check if thrust is available for setting
@@ -390,7 +404,8 @@ function runAnalysis(event) {
                 endurance: {
                     maxEndurance: maxEndurance,
                     maxEnduranceVelocity: maxEnduranceVelocity,
-                    maxEnduranceAltitude: maxEnduranceAltitude
+                    maxEnduranceAltitude: maxEnduranceAltitude,
+                    maxEnduranceAmps: maxEnduranceAmps
                 },
                 maxSpeed: {
                     maxCalcVelocity: maxCalcVelocity,

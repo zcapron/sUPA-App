@@ -112,8 +112,18 @@ document.addEventListener("DOMContentLoaded", function () {
                 req4.classList.add("notMet");
                 req4.innerHTML += "Not Met";
             }
+            
+            // calculate minimum battery capacity needed for objectives
+            function calcBatt(time, current) {
+                return (time / 60) * current * 1000;
+            }
+            batteryThreshold = calcBatt(30, maxEnduranceAmps);
+            batteryObjective = calcBatt(45, maxEnduranceAmps);
+
+
             document.getElementById("resultLog").innerHTML = `
             Max endurance is ${maxEndurance.toFixed(0)} minutes traveling at ${maxEnduranceVelocity} mph at ${maxEnduranceAltitude.toFixed(0)} ft (msl) pulling ${maxEnduranceAmps.toFixed(2)} amps.<br>
+            Battery capacity required for Threshold: ${batteryThreshold.toFixed(0)}mAh, Objective: ${batteryObjective.toFixed(0)}mAh,<br>
             Max speed is ${maxCalcVelocity} mph at ${maxCalcVelocityAltitude.toFixed(0)} ft (msl).<br>
             Min stall speed is ${minCalcVelocity} mph at ${minCalcVelocityAltitude.toFixed(0)} ft (msl).<br>
             Maximum calculated altitude is ${maxAltitude} ft (msl).`;

@@ -183,7 +183,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 let data = results[selectedAltitude][velocity];
 
 
-                if (data.AoA > 10.5 || isNaN(data.throttle) && motorToggle == true) continue;
+                if (data.AoA > 16 || isNaN(data.throttle) && motorToggle == true) continue;
 
                 let row = document.createElement("tr");
 
@@ -231,7 +231,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             for (let velocity in results[selectedAltitude]) {
                 // Skip first 10 vel
-                if (velocity < 16) continue;
+                if (velocity < 10) continue;
                 airspeed.push(parseFloat(velocity));
                 ldRatio.push(results[selectedAltitude][velocity].lOverD);
                 cLThreeHalfD.push(results[selectedAltitude][velocity].cLThreeHalfD);

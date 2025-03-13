@@ -352,7 +352,7 @@ function runAnalysis(event) {
 
                     // checking for stall speed 
 
-                    if (AoA < 11 && airspeed < minCalcVelocity && dragOz < maxThrust) {
+                    if (AoA < 16 && airspeed < minCalcVelocity && dragOz < maxThrust) {
                         minCalcVelocity = airspeed;
                         minCalcVelocityAltitude = altitude;
                     }

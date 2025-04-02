@@ -1,8 +1,9 @@
 var motorToggle = localStorage.getItem("motorToggle");
-
 document.getElementById("downloadTable").addEventListener("click", function () {
     const table = document.querySelector("#resultsTable");
     let csvContent = "data:text/csv;charset=utf-8,";
+    let fileName = prompt("Enter file name: ", "results_table.csv")
+    
 
     // Get table headers
     let headers = [];
@@ -24,7 +25,7 @@ document.getElementById("downloadTable").addEventListener("click", function () {
     const encodedUri = encodeURI(csvContent);
     const link = document.createElement("a");
     link.setAttribute("href", encodedUri);
-    link.setAttribute("download", "results_table.csv");
+    link.setAttribute("download", fileName);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

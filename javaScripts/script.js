@@ -145,10 +145,10 @@ function pullMotorData(motoNum) {
                         const columns = lines[i].trim().split(/\s+/);
                         if (columns.length < 12 || parseFloat(columns[12]) < 1) break;
 
-                        let [airspeed, thrust, efficiency, rpm, current] = [
+                        let [airspeed, thrust, efficiency, propEfficiency, rpm, current] = [
                             parseFloat(columns[0]), parseFloat(columns[12]),
-                            parseFloat(columns[10]), parseInt(columns[11]),
-                            parseFloat(columns[3])
+                            parseFloat(columns[16]), parseFloat(columns[15]),
+                            parseInt(columns[11]), parseFloat(columns[3])
                         ];
 
                         if (!lookupTable[airspeed]) lookupTable[airspeed] = {};
@@ -162,6 +162,7 @@ function pullMotorData(motoNum) {
                         lookupTable[airspeed][throttle] = {
                             "thrust": thrust,
                             "efficiency": efficiency,
+                            "propEfficiency": propEfficiency,
                             "rpm": rpm,
                             "Ct": Ct,
                             "diameter": propDiameter,
@@ -287,6 +288,7 @@ function runAnalysis(event) {
             let minCalcVelocityAltitude = 0;
             let maxVals = {};
             let maxAltitude = 0;
+            let altResults = {};
 
             // Create loop to iterate through altitudes
             for (let i=0; i < airDensities.length; i++) {
@@ -298,9 +300,15 @@ function runAnalysis(event) {
                 }
 
                 let j = 0
+                // get max rate of climb for altitude
+                let maxRateOfClimb = 0;
+                let maxRateOfClimbAngle = 0;
+                let maxRateOfClimbSpeed = 0;
+                let maxCoefficientLift = 0;
+
                 // Find throttle setting for required thrust
                 for (let airspeed in lookupTable) {
-                    const velocity = airspeed;
+                    const velocity = parseInt(airspeed);
                     const [dynamicPressure, coefficientLift, AoA, coefficientDrag, dragLb, dragOz, lOverD, cLThreeHalfD] =
                         calculateThrustRequired(velocity, rho, lSlopeConstants, dSlopeConstants, totalWeight, S);
                     
@@ -336,6 +344,17 @@ function runAnalysis(event) {
                     currentNeeded = interpolate(throttleSetting, lowerThrottle, upperThrottle, lookupTable[airspeed][lowerThrottle].current, lookupTable[airspeed][upperThrottle].current);
                     currentNeeded = currentNeeded * motorNum;
 
+                    // Calculate Rate of climb
+                    let velocityFPM = velocity * 5280 / 60; // velocity fpm
+                    let ROC = parseFloat((maxThrust * velocityFPM - dragOz * velocityFPM) / (totalWeight * 16));
+                    let ROCAngle
+
+                    if(velocity != 0) {
+                        ROCAngle= Math.asin(ROC / velocityFPM) * (180 / Math.PI); // angle in degress for climb
+                    } 
+                    console.log(ROCAngle, velocityFPM, ROC)
+
+
                     // Now calculate endurance
                     //endurance = caclulateEndurance(cLThreeHalfD, batteryEnergy, rho, S, totalWeight, efficiencySetting);
                     endurance = caclulateEndurance(batteryEnergy, currentNeeded);
@@ -352,9 +371,20 @@ function runAnalysis(event) {
 
                     // checking for stall speed 
 
-                    if (AoA < 16 && airspeed < minCalcVelocity && dragOz < maxThrust) {
+                    if (AoA < 16 && velocity < minCalcVelocity && dragOz < maxThrust) {
                         minCalcVelocity = airspeed;
                         minCalcVelocityAltitude = altitude;
+                    }
+
+                    // checking for max CL
+                    if (AoA < 16 && velocity <= minCalcVelocity && maxCoefficientLift < coefficientLift) {
+                        maxCoefficientLift = coefficientLift;
+                    }
+                    // check for rate of climb
+                    if (velocity > minCalcVelocity && ROC > maxRateOfClimb && ROCAngle < 16) {
+                        maxRateOfClimb = ROC;
+                        maxRateOfClimbSpeed = velocity;
+                        maxRateOfClimbAngle = ROCAngle;
                     }
 
                     // checking for max speed
@@ -391,10 +421,34 @@ function runAnalysis(event) {
                         cLThreeHalfD: cLThreeHalfD.toFixed(2),
                         endurance: endurance.toFixed(0),
                         thrust: maxThrust.toFixed(2),
-                        current: currentNeeded.toFixed(2)
+                        current: currentNeeded.toFixed(2),
+                        ROC: ROC.toFixed(0)
                     }
-                    console.log(endurance)
 
+                    
+                }
+                // Calculate takeoff parameters for given altitude
+                // const velocityLiftOff = 1.2 * minCalcVelocity;
+                // const incidenceAngle = 3; // degrees
+                // const coefficientLiftTo = lSlopeConstants[0] * (incidenceAngle) + lSlopeConstants[1];
+                // const coefficientDragTo = dSlopeConstants[0] * incidenceAngle**4 + dSlopeConstants[1] * incidenceAngle**3 + dSlopeConstants[2] * incidenceAngle**2 + dSlopeConstants[3] * incidenceAngle + dSlopeConstants[4];
+
+                // const qTo = 0.5 * rho * (0.7 * velocityLiftOff)**2;
+                // const liftTo = qTo * S * coefficientLiftTo;
+                // const dragTO = qTo * S * coefficientDragTo; 
+
+                // const friction = 0.08 // wet grass
+                // let thrustTo;
+
+                // const groundRoll = (1.44 * totalWeight**2) / (32.2 * rho * coefficientLiftTo * (thrustTO - dragTO - friction * (totalWeight - liftTo)));
+
+                // create an object for max values at each altitude
+                altResults[altitude] = {
+                    maxROC: maxRateOfClimb.toFixed(0),
+                    maxROCAngle: maxRateOfClimbAngle.toFixed(0),
+                    maxROCSpeed: maxRateOfClimbSpeed,
+                    //groundRoll: groundRoll,
+                    //velocityLiftOff: velocityLiftOff
                 }
                 
 
@@ -423,6 +477,7 @@ function runAnalysis(event) {
             localStorage.setItem("analysisResults", JSON.stringify(results));
             localStorage.setItem("maxResults", JSON.stringify(maxVals));
             localStorage.setItem("motorToggle", true);
+            localStorage.setItem("altResults", JSON.stringify(altResults));
 
             console.log("Successfully uploaded results");
             window.location.href = "results.html";

@@ -1,5 +1,36 @@
 var motorToggle = localStorage.getItem("motorToggle");
 
+document.getElementById("downloadTable").addEventListener("click", function () {
+    const table = document.querySelector("#resultsTable");
+    let csvContent = "data:text/csv;charset=utf-8,";
+
+    // Get table headers
+    let headers = [];
+    table.querySelectorAll("thead th").forEach(th => {
+        headers.push(th.innerText);
+    });
+    csvContent += headers.join(",") + "\n";
+
+    // Get table rows
+    table.querySelectorAll("tbody tr").forEach(row => {
+        let rowData = [];
+        row.querySelectorAll("td").forEach(td => {
+            rowData.push(td.innerText);
+        });
+        csvContent += rowData.join(",") + "\n";
+    });
+
+    // Create a download link and trigger it
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "results_table.csv");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+});
+
+
 const requirements = [
     [30, 45], // Flight time, minutes
     [6000, 9000], // Max Cruise Altitude (asl)
@@ -171,16 +202,24 @@ document.addEventListener("DOMContentLoaded", function () {
         let results;
         if (motorToggle == "true"){
             results = JSON.parse(localStorage.getItem("analysisResults"));
+            altitudeInfo = JSON.parse(localStorage.getItem("altResults"));
         } else {
             results = JSON.parse(localStorage.getItem("analysisResultsNoThrust"));
         }
 
         const selectedAltitude = altitudeSelect.value;
+        const altitudeBar = document.getElementById("altitudeInformation");
         const tableBody = document.querySelector("#resultsTable tbody");
         tableBody.innerHTML = ""; // Clear existing rows
         if (results[selectedAltitude]) {
             for (let velocity in results[selectedAltitude]) {
                 let data = results[selectedAltitude][velocity];
+                
+                if (motorToggle == "true") {
+                    //more performance data here
+                    altitudeBar.innerHTML = `Maximum climb rate at ${selectedAltitude} ft (msl) is ${altitudeInfo[selectedAltitude].maxROC} ft/m flying at
+                     ${altitudeInfo[selectedAltitude].maxROCSpeed} mph at an angle of ${altitudeInfo[selectedAltitude].maxROCAngle} degrees`;
+                }
 
 
                 if (data.AoA > 16 || isNaN(data.throttle) && motorToggle == true) continue;

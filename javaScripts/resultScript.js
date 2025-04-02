@@ -234,6 +234,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     <td>${data.AoA}</td>
                     <td>${data.coefficientDrag}</td>
                     <td>${data.dragOz}</td>
+                    <td>${data.thrust}</td>
                     <td>${data.lOverD}</td>
                     <td>${data.endurance}</td>
                     <td>${data.current}</td>

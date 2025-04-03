@@ -140,15 +140,18 @@ function pullMotorData(motoNum) {
                     const density = airDensities[altitude] || airDensities[0];
                     let throttle = file.name.split('.')[0];
                     let propDiameter = parseInt(propeller.split('x')[0]);
-
+                    let shift = 0
                     for (let i = dataStart; i < lines.length; i++) {
                         const columns = lines[i].trim().split(/\s+/);
-                        if (columns.length < 12 || parseFloat(columns[12]) < 1) break;
+                        if (columns.length < 10) break;
+                        if (columns.length > 10) {
+                            shift = -2;
+                        }
 
                         let [airspeed, thrust, efficiency, propEfficiency, rpm, current] = [
-                            parseFloat(columns[0]), parseFloat(columns[12]),
-                            parseFloat(columns[16]), parseFloat(columns[15]),
-                            parseInt(columns[11]), parseFloat(columns[3])
+                            parseFloat(columns[0]), parseFloat(columns[12 + shift]),
+                            parseFloat(columns[16 + shift]), parseFloat(columns[15 + shift]),
+                            parseInt(columns[11 + shift]), parseFloat(columns[3 + shift])
                         ];
 
                         if (!lookupTable[airspeed]) lookupTable[airspeed] = {};

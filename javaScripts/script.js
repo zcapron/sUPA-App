@@ -144,7 +144,7 @@ function pullMotorData(motoNum) {
                     for (let i = dataStart; i < lines.length; i++) {
                         const columns = lines[i].trim().split(/\s+/);
                         if (columns.length < 10) break;
-                        if (columns.length > 10) {
+                        if (columns.length < 12) {
                             shift = -2;
                         }
 
@@ -384,7 +384,7 @@ function runAnalysis(event) {
                         maxCoefficientLift = coefficientLift;
                     }
                     // check for rate of climb
-                    if (velocity > minCalcVelocity && ROC > maxRateOfClimb && ROCAngle < 16) {
+                    if (velocity > minCalcVelocity && ROC > maxRateOfClimb && ROCAngle < 10) {
                         maxRateOfClimb = ROC;
                         maxRateOfClimbSpeed = velocity;
                         maxRateOfClimbAngle = ROCAngle;

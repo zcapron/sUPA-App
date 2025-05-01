@@ -472,7 +472,8 @@ function runAnalysis(event) {
                     minCalcVelocity: minCalcVelocity,
                     minCalcVelocityAltitude: minCalcVelocityAltitude
                 },
-                maxAltitude: maxAltitude
+                maxAltitude: maxAltitude,
+                weight: totalWeight
             };
             
 

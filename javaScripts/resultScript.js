@@ -1,4 +1,6 @@
 var motorToggle = localStorage.getItem("motorToggle");
+let weight;
+
 document.getElementById("downloadTable").addEventListener("click", function () {
     const table = document.querySelector("#resultsTable");
     let csvContent = "data:text/csv;charset=utf-8,";
@@ -98,12 +100,14 @@ document.addEventListener("DOMContentLoaded", function () {
             minCalcVelocity = maxResults.minSpeed.minCalcVelocity;
             minCalcVelocityAltitude = maxResults.minSpeed.minCalcVelocityAltitude;
             maxAltitude = maxResults.maxAltitude;
+            weight = maxResults.weight;
         } else if (motorToggle == "false"){
             console.log("in second")
             results = JSON.parse(localStorage.getItem("analysisResultsNoThrust")) || {};
             maxResults = JSON.parse(localStorage.getItem("maxResults")) || {};
             minCalcVelocity = maxResults.minSpeed.minCalcVelocity;
             minCalcVelocityAltitude = maxResults.minSpeed.minCalcVelocityAltitude;
+            weight = maxResults.weight;
         }
         console.log(results);
 
@@ -268,7 +272,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const propInfo = JSON.parse(localStorage.getItem("propulsionInfo")) || {};
             const infoBar = document.getElementById("informationBar");
 
-            infoBar.innerHTML = `Motor(s): ${propInfo.motoNum} ${propInfo.motor} | Propellor: ${propInfo.propellor} | Battery: ${propInfo.battery} ${propInfo.batteryCapacity}mAh`
+            infoBar.innerHTML = `Motor(s): ${propInfo.motoNum} ${propInfo.motor} | Propellor: ${propInfo.propellor} | Battery: ${propInfo.battery} ${propInfo.batteryCapacity}mAh | Weight: ${weight}lbs`
 
             for (let velocity in results[selectedAltitude]) {
                 // Skip first 10 vel
